@@ -1,0 +1,42 @@
+{
+  "name": "webgl_ts_sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.ts",
+  "scripts": {
+    "watch": "gulp watch",
+    "build": "gulp build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "autoprefixer": "^9.7.3",
+    "browser-sync": "^2.26.7",
+    "createjs-def": "github:elsassph/createjs-def#feature/animate",
+    "cssnano": "^4.1.10",
+    "d": "^1.0.1",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-better-rollup": "^4.0.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-imagemin": "^6.2.0",
+    "gulp-newer": "^1.4.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-transform": "^3.0.5",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "tslib": "^1.10.0",
+    "typescript": "3.7.4"
+  },
+  "dependencies": {
+    "@typescript-eslint/parser": "^2.15.0",
+    "crash-colliders": "^2.0.2",
+    "rollup": "^1.29.0"
+  }
+}
