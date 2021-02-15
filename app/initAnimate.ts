@@ -95,12 +95,20 @@ function disableZoom(): void {
 export function initAnimate(stage: createjs.Stage | createjs.StageGL): Promise<AnimateLib> {
     
     return new Promise((done)=>{
-        
+
         const comp = AdobeAn.compositions[Object.keys(AdobeAn.compositions)[0]];
         const loader = new (createjs as any).LoadQueue(false);
+
+        loader.addEventListener("error", (evt: any)=> console.log(evt));
         loader.addEventListener("fileload", (evt: any)=>{handleFileLoad(evt,comp)});
         loader.addEventListener("complete", (evt: any)=>{done(handleComplete(stage,comp,evt))});
-        loader.loadManifest(comp.getLibrary().properties.manifest);
+        if(!(Object.keys(comp.getLibrary().properties.manifest).length == 0))
+        {
+            loader.loadManifest(comp.getLibrary().properties.manifest, false);
+        }
+
+        loader.load();
+
         disableZoom();
 
     })

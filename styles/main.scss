@@ -1,0 +1,23 @@
+/* Mein CSS */
+
+*{
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+
+    background-image:url(/images/green1.jpg); 
+    background-size: 65rem;
+    background-repeat: repeat;
+}
+
+
+
+#animation_container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

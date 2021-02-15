@@ -5,17 +5,17 @@
 
 //const game: Game = new Game();
 let stage: createjs.Stage;
-let level: createjs.MovieClip;
+let menu: createjs.MovieClip;
 
 
 
 
 function start(lib: AnimateLib, stage: createjs.Stage): void{
 
-    const stage_president: createjs.MovieClip = new lib.stage_president();
+    menu = new lib.stage_menu();
     
     
-    stage.addChild(stage_president);
+    stage.addChild(menu);
 
 }
 
