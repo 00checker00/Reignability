@@ -109,6 +109,7 @@ export function initAnimate(stage: createjs.Stage | createjs.StageGL): Promise<A
 
         loader.load();
 
+        (window as any).lib  = comp.getLibrary();
         disableZoom();
 
     })

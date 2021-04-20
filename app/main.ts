@@ -18,6 +18,9 @@ let game;
 function start(lib: AnimateLib, stage: createjs.Stage): void{
 
     stage.enableMouseOver(10);
+    createjs.Touch.enable(stage);
+    stage.mouseMoveOutside = true;
+
     levelLoad  = new LevelLoader(lib, stage); 
     
     //Main-Menu

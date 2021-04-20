@@ -39,6 +39,9 @@ export class Choose {
     private choose_presidentEvt():void
     {
         this.player_president.on("click",(evt:any): void =>{
+
+            this.stage_choose.setChildIndex(this.player_president,this.stage_choose.numChildren-1);
+
             this.player_president.gotoAndPlay("zoom");
 
             this.button_next = this.player_president.getChildByName("button_next") as createjs.MovieClip;

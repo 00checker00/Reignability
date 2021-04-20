@@ -697,12 +697,20 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// president
-	this.player_president = new lib.choose_president();
-	this.player_president.name = "player_president";
-	this.player_president.setTransform(369.4,518.65,1,1,0,0,0,105.8,104);
+	this.isSingleFrame = false;
+	// timeline functions:
+	this.frame_0 = function() {
+		if(this.isSingleFrame) {
+			return;
+		}
+		if(this.totalFrames == 1) {
+			this.isSingleFrame = true;
+		}
+		this.stop();
+	}
 
-	this.timeline.addTween(cjs.Tween.get(this.player_president).wait(1));
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1));
 
 	// lock
 	this.lock_joe = new lib.choose_lock();
@@ -735,6 +743,13 @@ if (reversed == null) { reversed = false; }
 	this.choose_activist.setTransform(200.35,805.25,1,1,0,0,0,101.1,102.4);
 
 	this.timeline.addTween(cjs.Tween.get(this.choose_activist).wait(1));
+
+	// president
+	this.player_president = new lib.choose_president();
+	this.player_president.name = "player_president";
+	this.player_president.setTransform(369.4,518.65,1,1,0,0,0,105.8,104);
+
+	this.timeline.addTween(cjs.Tween.get(this.player_president).wait(1));
 
 	// logo
 	this.instance = new lib.CachedBmp_2Kopie2();
@@ -786,12 +801,11 @@ if (reversed == null) { reversed = false; }
 	this.pollution_pic.name = "pollution_pic";
 	this.pollution_pic.setTransform(2752.5,640,1,1,0,0,0,2752.5,640);
 
-	this.timeline.addTween(cjs.Tween.get(this.pollution_pic).to({x:-2032.4},371).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.pollution_pic).wait(1));
 
 	this._renderFirstFrame();
 
-}).prototype = p = new cjs.MovieClip();
-p.nominalBounds = new cjs.Rectangle(-4784.9,0,10289.8,1280);
+}).prototype = getMCSymbolPrototype(lib.stage_panorama, new cjs.Rectangle(0,0,5504.9,1280), null);
 
 
 (lib.stage_menu = function(mode,startPosition,loop,reversed) {
@@ -937,16 +951,10 @@ if (reversed == null) { reversed = false; }
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
 
-	// default
-	this.instance = new lib.stage_panorama();
-	this.instance.setTransform(2752.5,640.05,1,1,0,0,0,2752.5,640);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
 	this._renderFirstFrame();
 
 }).prototype = p = new lib.AnMovieClip();
-p.nominalBounds = new cjs.Rectangle(360,640.1,5144.9,639.9);
+p.nominalBounds = new cjs.Rectangle(0,0,0,0);
 // library properties:
 lib.properties = {
 	id: 'B22B52CE08C5C54387DEBB6D67E45DE7',
@@ -956,8 +964,8 @@ lib.properties = {
 	color: "#666666",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/pollution.jpg?1618854066175", id:"pollution"},
-		{src:"images/Animate_atlas_1.png?1618854065982", id:"Animate_atlas_1"}
+		{src:"images/pollution.jpg?1618870458283", id:"pollution"},
+		{src:"images/Animate_atlas_1.png?1618870458204", id:"Animate_atlas_1"}
 	],
 	preloads: []
 };
