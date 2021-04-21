@@ -1,4 +1,5 @@
 import { LevelLoader } from "./levelLoader";
+import { levels } from "./levelLoader";
 
 export class Choose {
 
@@ -24,7 +25,8 @@ export class Choose {
 
             this.player_president.gotoAndStop("default");
             this.choose_presidentEvt();
-            this.lvlLoad.load("menu");
+            this.lvlLoad.load(levels.MENU);
+            //this.lvlLoad.load("menu");
             
         })
 
@@ -36,9 +38,9 @@ export class Choose {
 
     }
 
-    private choose_presidentEvt():void
+    private choose_presidentEvt(): void
     {
-        this.player_president.on("click",(evt:any): void =>{
+        this.player_president.on("click",(evt: any): void =>{
 
             this.stage_choose.setChildIndex(this.player_president,this.stage_choose.numChildren-1);
 
@@ -50,7 +52,7 @@ export class Choose {
             this.button_next.on("click",(): void =>{
                 this.player_president.gotoAndStop("default");
                 this.choose_presidentEvt();
-                this.lvlLoad.load("panorama");
+                this.lvlLoad.load(levels.PANORAMA);
                 
             })
 

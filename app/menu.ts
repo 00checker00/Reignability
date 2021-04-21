@@ -1,4 +1,5 @@
 import { LevelLoader } from "./levelLoader";
+import { levels } from "./levelLoader";
 
 export class Menu {
 
@@ -12,7 +13,7 @@ export class Menu {
         
         this.lvlLoad = loader;
 
-        let stage_menu = loader.stage_menu;
+        const stage_menu = loader.stage_menu;
         this.button_play = stage_menu.getChildByName("button_play") as createjs.MovieClip;
         this.button_what = stage_menu.getChildByName("button_what") as createjs.MovieClip;
         this.button_option = stage_menu.getChildByName("button_option") as createjs.MovieClip;
@@ -22,7 +23,7 @@ export class Menu {
         this.handleButton(this.button_option);
 
         this.button_play.on("click",(): void =>{
-            loader.load("choose");
+            loader.load(levels.CHOOSE);
         })
         
     }
