@@ -11,6 +11,8 @@ export class Panorama {
 
     private offset: {x: number; y: number};
 
+    private hold_circle: createjs.MovieClip;
+
     constructor(loader: LevelLoader) {
         
         this.lvlLoad = loader;
@@ -25,6 +27,14 @@ export class Panorama {
 
         this.pollution_pic.x = 0;
 
+        this.hold_circle = new this.lvlLoad.lib.hold_circle();
+
+        this.hold_circle.timeline.on("change",(): void=>{
+          
+           if(this.hold_circle.paused){
+                this.lvlLoad.load(levels.GAME);
+           }
+        })
 
         this.pollution_pic.on("click",(): void =>{
             this.stage_panorama.stop();
@@ -33,19 +43,38 @@ export class Panorama {
 
        
         this.pollution_pic.on("mousedown",(evt: any): void => {
-            this.offset = {x: this.pollution_pic.x - evt.stageX, y: this.pollution_pic.y - evt.stageY};
+            this.offset = {x: this.pollution_pic.x - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x, y: this.pollution_pic.y - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y};
+
+           
+            this.stage_panorama.addChild(this.hold_circle);
+            this.hold_circle.x = this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x;
+            this.hold_circle.y = this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y;
+            
+
         });
+
 
 
         this.pollution_pic.on("pressmove",(evt: any): void =>{
-            this.pollution_pic.x = Math.max(Math.min(evt.stageX + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
+            this.pollution_pic.x = Math.max(Math.min(this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
+            
         });
 
+
+        this.pollution_pic.on("pressup",(): void =>{
+            
+            //this.hold_ani.stop();
+            this.hold_circle.gotoAndPlay(0);
+            this.stage_panorama.removeChild(this.hold_circle);
+            
+        })
+
+        /*
         this.pollution_pic.on("dblclick",(): void =>{
 
             this.lvlLoad.load(levels.GAME);
             
-        });
+        });*/
     }
 
 

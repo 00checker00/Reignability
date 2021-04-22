@@ -19,10 +19,14 @@ export class Game {
     public card_text: createjs.Text;
     public card_name: createjs.Text;
 
+
     public deck: createjs.MovieClip;
 
     public stage_game: createjs.MovieClip;
 
+    private offset: {x: number; y: number};
+    private right = false;
+    private left = false;
 
     constructor(loader: LevelLoader) {
         
@@ -55,6 +59,8 @@ export class Game {
         this.card_text.text = "     ";
         this.card_name.text = "     ";
 
+       
+
         
     }
 
@@ -68,13 +74,11 @@ export class Game {
 
         let i = 1;
         let count = 0;
+        const anzahl = 3;
+
         createjs.Ticker.on("tick",(): void =>{
-            
-            //if(i< 50)
-            i = (i+1)%6
-     
-            console.log(i);
-            if(i==0 && count < 4)
+            i = (i+1)%6;
+            if(i==0 && count <= anzahl)
             {
                 count++;
                 const ani = new this.lvlLoad.lib.shuffle_ani();
@@ -84,10 +88,80 @@ export class Game {
                 ani.x = this.deck.x-200;
                 ani.y = this.deck.y-270;
             }
-            
 
+            if(count == anzahl)
+            {
+                count = anzahl+1;
+                this.startGame();
+            }
+           
         });
     }
  
+    public startGame(): void
+    {
+
+        this.deck.gotoAndPlay("draw");
+
+        createjs.Ticker.on("tick",(evt: any): void =>{
+            //this.pollution_pic.x = Math.max(Math.min(evt.stageX + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
+            //console.log("Right: " + this.right + " Left: " + this.left);
+            
+            const mouseX = this.lvlLoad.stage.mouseX;
+            
+
+            if(this.deck.currentLabel == "ready")
+            {
+            if(mouseX > 700 && !this.right)
+            {
+                this.deck.gotoAndPlay("move_right");
+                this.right = true;
+                
+            }
+            if(mouseX < 300 && !this.left)
+            {
+                this.deck.gotoAndPlay("move_left");
+                this.left = true;
+            }
+            
+         
+        }
+
+        if(mouseX > 301 && mouseX < 699)
+        {
+            if(this.right)
+            this.deck.gotoAndPlay("move_right_back");
+
+            if(this.left)
+            this.deck.gotoAndPlay("move_left_back");
+
+
+            this.left = false;
+            this.right = false;
+
+            
+        }
+
+        });
+
+
+        this.stage_game.on("click",(): void =>{
+            
+            if(this.right)
+            {
+                this.deck.gotoAndPlay("discard_right");
+                this.right = false;
+            }
+
+            if(this.left)
+            {
+                this.deck.gotoAndPlay("discard_left");
+                this.left = false;
+            }
+            
+        });
+
+    }
+
 
 }

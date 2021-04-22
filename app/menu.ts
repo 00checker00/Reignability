@@ -22,9 +22,9 @@ export class Menu {
         this.handleButton(this.button_what);
         this.handleButton(this.button_option);
 
-        this.button_play.on("click",(): void =>{
-            loader.load(levels.CHOOSE);
-        })
+        this.button_play.mouseChildren = false;
+        this.button_what.mouseChildren = false;
+        this.button_option.mouseChildren = false;
         
     }
 
@@ -34,12 +34,18 @@ export class Menu {
          button.on("mouseleave",(): void =>{
             button.gotoAndStop("default");
         })
-        button.on("mouseover",(): void =>{
+        button.on("mousedown",(): void =>{
             button.gotoAndStop("hover");
         })
         button.on("rollout",(): void =>{
             button.gotoAndStop("default");
         })
+        button.on("pressup",(): void =>{
+            button.gotoAndStop("default");
+            this.lvlLoad.load(levels.CHOOSE);
+        })
+
+
     }
 
 
