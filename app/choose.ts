@@ -21,9 +21,10 @@ export class Choose {
         this.player_president = this.stage_choose.getChildByName("player_president") as createjs.MovieClip;
 
 
-        this.button_back.on("click",(): void =>{
+        this.button_back.on("pressup",(): void =>{
 
             this.player_president.gotoAndStop("default");
+            this.button_back.gotoAndStop("default");
             this.choose_presidentEvt();
             this.lvlLoad.load(levels.MENU);
             //this.lvlLoad.load("menu");
@@ -49,8 +50,9 @@ export class Choose {
             this.button_next = this.player_president.getChildByName("button_next") as createjs.MovieClip;
             this.button_next.gotoAndStop("default");
 
-            this.button_next.on("click",(): void =>{
+            this.button_next.on("pressup",(): void =>{
                 this.player_president.gotoAndStop("default");
+                this.button_back.gotoAndStop("default");
                 this.choose_presidentEvt();
                 this.lvlLoad.load(levels.PANORAMA);
                 
@@ -65,33 +67,15 @@ export class Choose {
 
     private handleButton(button: createjs.MovieClip): void
     {
+        button.mouseChildren = false;
 
          button.on("mouseleave",(): void =>{
             button.gotoAndStop("default");
         })
-        button.on("mouseover",(): void =>{
+        button.on("mousedown",(): void =>{
             button.gotoAndStop("hover");
         })
         button.on("rollout",(): void =>{
-            button.gotoAndStop("default");
-        })
-    }
-
-
-
-
-
-
-    private removeHandleButton(button: createjs.MovieClip): void
-    {
-
-         button.removeEventListener("mouseleave",(): void =>{
-            button.gotoAndStop("default");
-        })
-        button.removeEventListener("mouseover",(): void =>{
-            button.gotoAndStop("hover");
-        })
-        button.removeEventListener("rollout",(): void =>{
             button.gotoAndStop("default");
         })
     }

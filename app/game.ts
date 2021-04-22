@@ -21,12 +21,20 @@ export class Game {
 
 
     public deck: createjs.MovieClip;
+    public deck_content_text: createjs.Text;
+
+    public card_background: createjs.MovieClip;
+    public card_middle: createjs.MovieClip;
+    public card_front: createjs.MovieClip;
+    // president // activist // joe
+    public current_player = "president";
 
     public stage_game: createjs.MovieClip;
 
     private offset: {x: number; y: number};
     private right = false;
     private left = false;
+    private out = false;
 
     constructor(loader: LevelLoader) {
         
@@ -46,7 +54,17 @@ export class Game {
         this.card_name = this.stage_game.getChildByName("card_name") as createjs.Text;
 
         this.deck = this.stage_game.getChildByName("deck") as createjs.MovieClip;
-      
+        this.deck_content_text = this.deck.getChildByName("content_text") as createjs.Text;
+        this.card_background = this.deck.getChildByName("card_background") as createjs.MovieClip;
+        this.card_middle = this.deck.getChildByName("card_middle") as createjs.MovieClip;
+        this.card_front = this.deck.getChildByName("card_front") as createjs.MovieClip;
+
+        this.card_front.gotoAndStop(this.current_player);
+        this.card_front.loop = false;
+        this.card_middle.gotoAndStop(this.current_player);
+        this.card_middle.loop = false;
+        this.card_background.gotoAndStop(this.current_player);
+        this.card_background.loop = false;
 
         this.social_balken.scaleY = 0.01;
         this.natur_balken.scaleY = 0.05;
@@ -59,75 +77,57 @@ export class Game {
         this.card_text.text = "     ";
         this.card_name.text = "     ";
 
+        this.deck_content_text.text = " ";
        
+        this.stage_game.on("rollout",(): void =>{
+           this.right = false;
+           this.left = false;
+           this.out = true;
+           this.deck.gotoAndStop("ready");
+           this.deck_content_text.text = this.left + " " + this.right;
+        })
 
+        this.stage_game.on("rollover",(): void =>{
+            this.out = false;
+         })
         
     }
 
-    public shuffleAnimation(): void
-    {
-      
-        // these are equivalent, 1000ms / 40fps = 25ms
-
-        //createjs.Ticker.interval = 1000;
-        createjs.Ticker.framerate = 20;
-
-        let i = 1;
-        let count = 0;
-        const anzahl = 3;
-
-        createjs.Ticker.on("tick",(): void =>{
-            i = (i+1)%6;
-            if(i==0 && count <= anzahl)
-            {
-                count++;
-                const ani = new this.lvlLoad.lib.shuffle_ani();
-                
-                //(ani as any).card_back.gotoAndStop("activist");
-                this.stage_game.addChild(ani);
-                ani.x = this.deck.x-200;
-                ani.y = this.deck.y-270;
-            }
-
-            if(count == anzahl)
-            {
-                count = anzahl+1;
-                this.startGame();
-            }
-           
-        });
-    }
  
     public startGame(): void
     {
 
+      
+
         this.deck.gotoAndPlay("draw");
 
         createjs.Ticker.on("tick",(evt: any): void =>{
-            //this.pollution_pic.x = Math.max(Math.min(evt.stageX + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
-            //console.log("Right: " + this.right + " Left: " + this.left);
             
-            const mouseX = this.lvlLoad.stage.mouseX;
-            
+            const mouseX = this.stage_game.globalToLocal(this.lvlLoad.stage.mouseX,this.lvlLoad.stage.mouseY).x;
+           // console.log(this.stage_game.globalToLocal(this.lvlLoad.stage.mouseX,this.lvlLoad.stage.mouseY).x);
 
-            if(this.deck.currentLabel == "ready")
+            if(this.deck.currentLabel == "ready" && !this.out)
             {
-            if(mouseX > 700 && !this.right)
+            if(mouseX > 560 && !this.right)
             {
                 this.deck.gotoAndPlay("move_right");
                 this.right = true;
+                this.deck_content_text.text = this.left + " " + this.right;
                 
             }
-            if(mouseX < 300 && !this.left)
+            if(mouseX < 190 && !this.left)
             {
                 this.deck.gotoAndPlay("move_left");
                 this.left = true;
+                this.deck_content_text.text = this.left + " " + this.right;
             }
             
          
         }
 
-        if(mouseX > 301 && mouseX < 699)
+        
+
+        if(mouseX > 191 && mouseX < 559 && !this.out && this.deck.paused)
         {
             if(this.right)
             this.deck.gotoAndPlay("move_right_back");
@@ -135,6 +135,7 @@ export class Game {
             if(this.left)
             this.deck.gotoAndPlay("move_left_back");
 
+            this.deck_content_text.text = this.left + " " + this.right;
 
             this.left = false;
             this.right = false;
@@ -163,5 +164,38 @@ export class Game {
 
     }
 
+    
+    public shuffleAnimation(): void
+    {
+      
+        // these are equivalent, 1000ms / 40fps = 25ms
+        //createjs.Ticker.interval = 1000;
+        createjs.Ticker.framerate = 20;
+
+        let i = 1;
+        let count = 0;
+        const anzahl = 3;
+
+        createjs.Ticker.on("tick",(): void =>{
+            i = (i+1)%6;
+            if(i==0 && count <= anzahl)
+            {
+                count++;
+                const ani = new this.lvlLoad.lib.shuffle_ani();
+                
+                (ani as any).card_back.gotoAndStop(this.current_player);
+                this.stage_game.addChild(ani);
+                ani.x = this.deck.x-200;
+                ani.y = this.deck.y-270;
+            }
+
+            if(count == anzahl)
+            {
+                count = anzahl+1;
+                this.startGame();
+            }
+           
+        });
+    }
 
 }

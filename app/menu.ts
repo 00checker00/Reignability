@@ -21,15 +21,12 @@ export class Menu {
         this.handleButton(this.button_play);
         this.handleButton(this.button_what);
         this.handleButton(this.button_option);
-
-        this.button_play.mouseChildren = false;
-        this.button_what.mouseChildren = false;
-        this.button_option.mouseChildren = false;
         
     }
 
     private handleButton(button: createjs.MovieClip): void
     {
+        button.mouseChildren = false;
 
          button.on("mouseleave",(): void =>{
             button.gotoAndStop("default");
