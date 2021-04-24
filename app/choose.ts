@@ -54,6 +54,7 @@ export class Choose {
                 this.player_president.gotoAndStop("default");
                 this.button_back.gotoAndStop("default");
                 this.choose_presidentEvt();
+                (this.lvlLoad.lib as any).player = "president";
                 this.lvlLoad.load(levels.PANORAMA);
                 
             })
