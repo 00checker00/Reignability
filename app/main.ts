@@ -5,12 +5,14 @@ import { levels } from "./levelLoader";
 import { Menu } from "./menu";
 import { Panorama } from "./panorama";
 import { Game } from "./game";
-
-
+import { XmlLoader } from "./xmlLoader";
 
 let stage: createjs.Stage;
 
 let levelLoad: LevelLoader;
+let xmlP: XmlLoader; //President XML Fragen
+let xmlA: XmlLoader; //Activist XML Fragen
+let xmlJ: XmlLoader; //Joe XML Fragen
 
 let menu: Menu; //Verwalter von Menu
 let choose: Choose;
@@ -25,8 +27,9 @@ function start(lib: AnimateLib, stage: createjs.Stage): void{
     createjs.Touch.enable(stage);
     stage.mouseMoveOutside = true;
 
-    levelLoad  = new LevelLoader(lib, stage); 
     
+    xmlP = new XmlLoader("xml/question_president.xgml");
+    levelLoad  = new LevelLoader(lib, stage, xmlP); 
     //Main-Menu
     levelLoad.load(levels.MENU);
 

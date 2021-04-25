@@ -1,4 +1,5 @@
 import { Game } from "./game";
+import { XmlLoader } from "./xmlLoader";
 
 export enum levels {
         MENU = "menu",
@@ -18,17 +19,26 @@ export class LevelLoader {
 
     public current_stage: createjs.MovieClip;    
 
+    public xmlP: XmlLoader; //President XML Fragen
+    public xmlA: XmlLoader; //Activist XML Fragen
+    public xmlJ: XmlLoader; //Joe XML Fragen
+
     public game: Game;
+
+
 
     // menu // choose // panorama // game
 
-    constructor(lib: AnimateLib, stage: createjs.Stage) {
+    constructor(lib: AnimateLib, stage: createjs.Stage, xmlP: XmlLoader) {
+
         this.lib = lib;
         this.stage = stage;
         this.stage_menu = new lib.stage_menu();
         this.stage_choose = new lib.stage_choose();
         this.stage_panorama = new lib.stage_panorama();
         this.stage_game = new lib.stage_game();
+
+        this.xmlP = xmlP;
 
     }
 
@@ -63,6 +73,14 @@ export class LevelLoader {
             this.stage.addChild(this.stage_game);
             this.current_stage = this.stage_game;
             this.game.shuffleAnimation();
+
+            if((this.lib as any).player === "president")
+            {
+                this.game.current_player = "president";
+                this.game.cardList = this.xmlP.cardList;
+                this.game.currentCard = this.xmlP.cardList[this.game.cardIndex];
+            }
+
         }
 
     }

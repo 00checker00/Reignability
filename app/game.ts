@@ -1,5 +1,4 @@
 import { LevelLoader } from "./levelLoader";
-//import { levels } from "./levelLoader";
 import { Card } from "./card";
 
 
@@ -32,7 +31,7 @@ export class Game {
     public card_middle: createjs.MovieClip;
     public card_front: createjs.MovieClip;
     // president // activist // joe
-    public current_player = "president";
+    public current_player;
 
     public stage_game: createjs.MovieClip;
 
@@ -44,22 +43,17 @@ export class Game {
     private left = false;
     private out = false;
 
-
-    private cardList = [
-        //id,vSr,vNr,vDr,vSl,vNl,vDl,cText,cName,textR,textL,textM
-
-        new Card("ID_002", -0.03, 0.04, -0.05, 0, 0.03, 0.06, "Dies ist ein erster Test", "Mr. TestCard", "Hau Rein!", "Nee!", ""),
-        new Card("ID_002", 0.03, 0, 0.03, 0.01, 0.02, 0.04, "Der zweite Test", "Dr. Robot", "AJA Gib ihm!", "das weiser!", "die Qual!")
-    ];
-
-    public currentCard: Card = this.cardList[0];
-
+    public cardList: Card[];
+    public cardIndex = 0;
+    public currentCard: Card;
+    
 
     constructor(loader: LevelLoader) {
 
         this.lvlLoad = loader;
 
         this.stage_game = this.lvlLoad.stage_game;
+
 
         this.pillar_social = this.stage_game.getChildByName("pillar_social") as createjs.MovieClip;
         this.pillar_natur = this.stage_game.getChildByName("pillar_natur") as createjs.MovieClip;
@@ -84,13 +78,6 @@ export class Game {
         this.card_middle = this.deck.getChildByName("card_middle") as createjs.MovieClip;
         this.card_front = this.deck.getChildByName("card_front") as createjs.MovieClip;
 
-        
-        this.card_front.gotoAndStop(this.current_player);
-        this.card_middle.gotoAndStop(this.current_player);
-        this.card_background.gotoAndStop(this.current_player);
-     
-        
-
         this.card_text.text = "";
         this.card_name.text = "";
         this.deck_content_text.text = "";
@@ -106,13 +93,14 @@ export class Game {
             this.left = false;
             this.out = true;
             this.deck.gotoAndStop("ready");
-            this.deck_content_text.text = this.left + " " + this.right;
+            this.deck_content_text.text = " ";
         })
 
         this.stage_game.on("rollover", (): void => {
             this.out = false;
         })
 
+        this.stage_game.mouseChildren = false;
     }
 
 
@@ -120,6 +108,7 @@ export class Game {
 
         this.deck.gotoAndPlay("draw");
 
+        console.log(this.cardList);
         this.card_text.text = this.currentCard.card_text;
         this.card_name.text = this.currentCard.card_name;
         (this.lvlLoad.lib as any).content = this.currentCard.card_id;
@@ -154,22 +143,34 @@ export class Game {
             
         });
 
-
-        this.stage_game.on("click", (): void => {
+        // Karte los lassen 
+        this.stage_game.on("pressup", (): void => {
 
             if (this.right) {
                 this.deck.gotoAndPlay("discard_right");
+                this.deck_content_text.text = " ";
                 this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
                 this.right = false;
+
             }
 
             if (this.left) {
                 this.deck.gotoAndPlay("discard_left");
+                this.deck_content_text.text = " ";
                 this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
                 this.left = false;
             }
 
-            console.log( (this.lvlLoad.lib as any).player);
+            if(this.cardIndex >= this.cardList.length-1)
+            {
+                this.cardIndex = 0;
+                this.currentCard = this.cardList[this.cardIndex];
+            }
+            else{
+                this.cardIndex++;
+                this.currentCard = this.cardList[this.cardIndex];
+            }
+            
         });
 
     }
