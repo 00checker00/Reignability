@@ -77,8 +77,8 @@ export class LevelLoader {
             if((this.lib as any).player === "president")
             {
                 this.game.current_player = "president";
-                this.game.cardList = this.xmlP.cardList;
-                this.game.currentCard = this.xmlP.cardList[this.game.cardIndex];
+                //this.game.cardList = this.xmlP.cardList;
+                //this.game.currentCard = this.xmlP.cardList[this.game.cardIndex];
             }
 
         }

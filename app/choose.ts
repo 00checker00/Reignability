@@ -7,7 +7,7 @@ export class Choose {
 
     public button_back: createjs.MovieClip;
     public player_president: createjs.MovieClip;
-    public button_next: createjs.MovieClip;
+    public button_next?: createjs.MovieClip;
 
     public stage_choose: createjs.MovieClip;
 

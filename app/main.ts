@@ -1,4 +1,6 @@
-﻿import { Choose } from "./choose";
+﻿/// <reference path="../_build/@types/Animate.d.ts" />
+import "./styles/main.scss";
+import { Choose } from "./choose";
 import { initAnimate } from "./initAnimate";
 import { LevelLoader } from "./levelLoader";
 import { levels } from "./levelLoader";
@@ -28,7 +30,7 @@ function start(lib: AnimateLib, stage: createjs.Stage): void{
     stage.mouseMoveOutside = true;
 
     
-    xmlP = new XmlLoader("xml/question_president.xgml");
+    xmlP = new XmlLoader("xml/question_president.graphml");
     levelLoad  = new LevelLoader(lib, stage, xmlP); 
     //Main-Menu
     levelLoad.load(levels.MENU);
@@ -55,3 +57,5 @@ export function init(): void {
     
     
 }
+
+init();

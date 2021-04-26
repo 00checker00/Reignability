@@ -1,3 +1,5 @@
+import { RandomPool } from "./randomPool";
+
 export class Card {
 
     public card_id: string;
@@ -16,6 +18,10 @@ export class Card {
     public text_rechts: string;
     public text_links: string;
     public text_mitte: string;
+
+    public next_links: Card | RandomPool | null = null;
+    public next_rechts: Card | RandomPool | null = null;
+
 
 
     constructor(id: string,vSr: number,vNr: number,vDr: number,vSl: number,vNl: number,vDl: number,cText: string,cName: string,textR: string,textL: string,textM: string) {
