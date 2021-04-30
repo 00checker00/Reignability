@@ -48,8 +48,6 @@ export async function loadXML(url: string): Promise<(Card | RandomPool)[]> {
 
                 xmlDoc.find(`data[key=${mappings["type"]}]:contains(random)`).parent("node").each((i, element) => {
 
-                    const test = $(element);
-                    console.log(test);
                     const count = $(element).find(`data[key=${mappings["random_count"]}]`).text();
                     const node_id = $(element).attr("id")!;
 
@@ -87,14 +85,15 @@ export async function loadXML(url: string): Promise<(Card | RandomPool)[]> {
                         node.next_rechts = cards[right.target!];
 
                         node.text_rechts = right.content_text;
-                        node.value_social_rechts = parseInt(right.valueSocial);
-                        node.value_natur_rechts = parseInt(right.valueNatur);
-                        node.value_dollar_rechts = parseInt(right.valueDollar);
+                     
+                        node.value_social_rechts = (parseInt(right.valueSocial)||0)/100;
+                        node.value_natur_rechts = (parseInt(right.valueNatur)||0)/100;
+                        node.value_dollar_rechts = (parseInt(right.valueDollar)||0)/100;
 
                         node.text_links = left.content_text;
-                        node.value_social_links = parseInt(left.valueSocial);
-                        node.value_natur_links = parseInt(left.valueNatur);
-                        node.value_dollar_links = parseInt(left.valueDollar);
+                        node.value_social_links = (parseInt(left.valueSocial)||0)/100;
+                        node.value_natur_links = (parseInt(left.valueNatur)||0)/100;
+                        node.value_dollar_links = (parseInt(left.valueDollar)||0)/100;
 
                     }
 
@@ -112,6 +111,7 @@ export async function loadXML(url: string): Promise<(Card | RandomPool)[]> {
                         }
                         node.next = cards[target.target!];
                         node.pool = pool.map((element) => cards[element.target!]);
+                        node.shufflePool();
                     }
 
 

@@ -45,8 +45,9 @@ export class Game {
     private out = false;
 
     public cardList: CardList;
-    public cardIndex = 0;
     public currentCard: Card;
+    //public cardIndex = 0;
+ 
     
 
     constructor(loader: LevelLoader) {
@@ -54,7 +55,7 @@ export class Game {
         this.lvlLoad = loader;
 
         this.stage_game = this.lvlLoad.stage_game;
-        
+
 
         this.pillar_social = this.stage_game.getChildByName("pillar_social") as createjs.MovieClip;
         this.pillar_natur = this.stage_game.getChildByName("pillar_natur") as createjs.MovieClip;
@@ -105,13 +106,13 @@ export class Game {
     }
 
 
+
     public startGame(): void {
 
         this.deck.gotoAndPlay("draw");
 
         console.log(this.cardList);
 
-        
         this.card_text.text = this.currentCard.card_text;
         this.card_name.text = this.currentCard.card_name;
         (this.lvlLoad.lib as any).content = this.currentCard.card_id;
@@ -121,19 +122,24 @@ export class Game {
 
             const mouseX = this.stage_game.globalToLocal(this.lvlLoad.stage.mouseX, this.lvlLoad.stage.mouseY).x;
 
+            
             if (this.deck.currentLabel == "ready" && !this.out) {
+
+                this.card_text.text = this.currentCard.card_text;
+                this.card_name.text = this.currentCard.card_name;
+
                 //Swipen nach Rechts oder Links
                 if (mouseX > 560 && !this.right) {
                     this.deck.gotoAndPlay("move_right");
                     this.right = true;
                     this.setDisplayCard(this.currentCard);
-                    //this.deck_content_text.text = this.left + " " + this.right;
+                 
+                    console.log(this.currentCard.value_dollar_rechts,this.currentCard.value_natur_rechts,this.currentCard.value_social_rechts);
                 }
                 if (mouseX < 190 && !this.left) {
                     this.deck.gotoAndPlay("move_left");
                     this.left = true;
                     this.setDisplayCard(this.currentCard);
-                    // this.deck_content_text.text = this.left + " " + this.right;
                 }
             }
 
@@ -149,11 +155,33 @@ export class Game {
         // Karte los lassen 
         this.stage_game.on("pressup", (): void => {
 
+            //Touch Reset
+            this.lvlLoad.stage.mouseX = this.lvlLoad.stage.getBounds().width/2;
+            
+
             if (this.right) {
                 this.deck.gotoAndPlay("discard_right");
                 this.deck_content_text.text = " ";
+                this.card_text.text = " ";
+                this.card_name.text = " ";
                 this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
                 this.right = false;
+
+                if(this.currentCard instanceof Card)
+                {
+                    this.currentCard = this.currentCard.next_links as Card;
+                    this.currentCard.visited = true;
+                }
+                if(this.currentCard instanceof RandomPool)
+                {                   
+                    if(this.currentCard.index < this.currentCard.count)
+                    {
+                        const randomCard = this.currentCard.pool[this.currentCard.index];
+                        this.currentCard.index++;
+                        this.currentCard = randomCard as Card;
+                    }
+                }
+                
 
             }
 
@@ -162,17 +190,28 @@ export class Game {
                 this.deck_content_text.text = " ";
                 this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
                 this.left = false;
+
+                if(this.currentCard instanceof Card)
+                {
+                    this.currentCard = this.currentCard.next_links as Card;
+                }
+                if(this.currentCard instanceof RandomPool)
+                {                   
+                    if(this.currentCard.index < this.currentCard.count)
+                    {
+                        const randomCard = this.currentCard.pool[this.currentCard.index];
+                        this.currentCard.index++;
+                        this.currentCard = randomCard as Card;
+                    }
+                    else
+                    {
+                        this.currentCard.index = 0;
+                        this.currentCard = this.currentCard.next as Card;
+                    }
+                }
+
             }
 
-            if(this.cardIndex >= this.cardList.length-1)
-            {
-                this.cardIndex = 0;
-                //this.currentCard = this.cardList[this.cardIndex];
-            }
-            else{
-                this.cardIndex++;
-                //this.currentCard = this.cardList[this.cardIndex];
-            }
             
         });
 

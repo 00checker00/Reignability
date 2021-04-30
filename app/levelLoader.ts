@@ -1,5 +1,6 @@
 import { Game } from "./game";
 import { CardList } from "./card";
+import { Card } from "./card";
 import { loadXML } from "./xmlLoader";
 
 export enum levels {
@@ -73,13 +74,14 @@ export class LevelLoader {
             this.current_stage = this.stage_game;
             this.game.shuffleAnimation();
 
+
             if((this.lib as any).player === "president")
             {
                 this.game.current_player = "president";
 
                 this.game.cardList = this.decks[this.game.current_player];
-                //this.game.cardList = this.xmlP.cardList;
-                //this.game.currentCard = this.xmlP.cardList[this.game.cardIndex];
+                this.game.currentCard = this.game.cardList[0] as Card;
+                this.game.currentCard.visited = true;
             }
 
         }

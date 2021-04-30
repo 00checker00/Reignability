@@ -39,7 +39,13 @@ export class Menu {
         })
         button.on("pressup",(): void =>{
             button.gotoAndStop("default");
+
+            if(button == this.button_play)
             this.lvlLoad.load(levels.CHOOSE);
+            
+            //var arr1 = ["a", "b", "c", "d","f","g"];
+            //arr1.sort(() => (Math.random() > .5) ? 1 : -1);
+            //console.log(arr1);
         })
 
 
