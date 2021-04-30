@@ -8,7 +8,7 @@ const mkdirp = require("mkdirp");
 
 module.exports = {
     // Change to your "entry-point".
-    entry: './app/main', 
+    entry: ["babel-regenerator-runtime",'./app/main'], 
     devtool: "inline-source-map",
     devServer: {
         contentBase: "./dist"

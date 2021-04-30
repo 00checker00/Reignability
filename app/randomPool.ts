@@ -9,7 +9,6 @@ export class RandomPool {
     public pool: (Card | RandomPool)[] = [];
 
 
-
     constructor(count: number)
    {
        this.count = count;

@@ -1,16 +1,11 @@
 {
-  "name": "webgl_ts_sample",
+  "name": "reignability",
   "version": "1.0.0",
   "description": "",
   "main": "app.ts",
   "scripts": {
-    "type-check": "tsc --noEmit",
-    "type-check:watch": "pnpm run type-check -- --watch",
-    "build": "pnpm run build:types && npm run build:js",
-    "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "babel src --out-dir _build --extensions .ts --source-maps inline",
-    "bundle": "webpack",
-    "watch": "webpack serve --open"
+    "bundle": "webpack --config webpack.prod.js",
+    "watch": "webpack serve --open --config webpack.dev.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +18,7 @@
     "@types/createjs": "^0.0.29",
     "@types/jquery": "^3.5.5",
     "babel-loader": "^8.2.2",
+    "babel-regenerator-runtime": "^6.5.0",
     "copy-webpack-plugin": "^8.1.1",
     "createjs-def": "github:elsassph/createjs-def#feature/animate",
     "css-loader": "^5.2.4",
@@ -36,7 +32,8 @@
     "typescript": "^4.2.4",
     "webpack": "^5.35.1",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "jquery": "^3.6.0"

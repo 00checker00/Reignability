@@ -1,5 +1,6 @@
 import { Game } from "./game";
-import { XmlLoader } from "./xmlLoader";
+import { CardList } from "./card";
+import { loadXML } from "./xmlLoader";
 
 export enum levels {
         MENU = "menu",
@@ -19,17 +20,15 @@ export class LevelLoader {
 
     public current_stage: createjs.MovieClip;    
 
-    public xmlP: XmlLoader; //President XML Fragen
-    public xmlA: XmlLoader; //Activist XML Fragen
-    public xmlJ: XmlLoader; //Joe XML Fragen
 
     public game: Game;
 
+    private decks:{[key:string]:CardList};
 
 
     // menu // choose // panorama // game
 
-    constructor(lib: AnimateLib, stage: createjs.Stage, xmlP: XmlLoader) {
+    constructor(lib: AnimateLib, stage: createjs.Stage, decks:{[key:string]:CardList}) {
 
         this.lib = lib;
         this.stage = stage;
@@ -38,11 +37,11 @@ export class LevelLoader {
         this.stage_panorama = new lib.stage_panorama();
         this.stage_game = new lib.stage_game();
 
-        this.xmlP = xmlP;
+        this.decks = decks;
 
     }
 
-    public load(value: levels): void
+    public async load(value: levels): Promise<void>
     {
         if(this.current_stage != null)
         {
@@ -77,6 +76,8 @@ export class LevelLoader {
             if((this.lib as any).player === "president")
             {
                 this.game.current_player = "president";
+
+                this.game.cardList = this.decks[this.game.current_player];
                 //this.game.cardList = this.xmlP.cardList;
                 //this.game.currentCard = this.xmlP.cardList[this.game.cardIndex];
             }

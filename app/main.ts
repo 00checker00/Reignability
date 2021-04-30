@@ -7,14 +7,11 @@ import { levels } from "./levelLoader";
 import { Menu } from "./menu";
 import { Panorama } from "./panorama";
 import { Game } from "./game";
-import { XmlLoader } from "./xmlLoader";
+import { loadXML } from "./xmlLoader";
 
 let stage: createjs.Stage;
 
 let levelLoad: LevelLoader;
-let xmlP: XmlLoader; //President XML Fragen
-let xmlA: XmlLoader; //Activist XML Fragen
-let xmlJ: XmlLoader; //Joe XML Fragen
 
 let menu: Menu; //Verwalter von Menu
 let choose: Choose;
@@ -22,16 +19,16 @@ let panorama: Panorama;
 let game: Game;
 
 
-function start(lib: AnimateLib, stage: createjs.Stage): void{
+async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>{
 
   
     stage.enableMouseOver(10);
     createjs.Touch.enable(stage);
     stage.mouseMoveOutside = true;
 
-    
-    xmlP = new XmlLoader("xml/question_president.graphml");
-    levelLoad  = new LevelLoader(lib, stage, xmlP); 
+    const decks = Object.fromEntries(await Promise.all(["president"].map(async (deck)=> [deck,await loadXML(`/xml/question_${deck}.graphml`)])));
+
+    levelLoad  = new LevelLoader(lib, stage, decks); 
     //Main-Menu
     levelLoad.load(levels.MENU);
 
@@ -52,7 +49,10 @@ export function init(): void {
     stage = new createjs.Stage(canvas);
     stage.setBounds(0,0,720,1280);
 
-    initAnimate(stage).then((lib: AnimateLib)=>start(lib,stage));
+
+    initAnimate(stage).then((lib: AnimateLib)=>start(lib,stage).then(()=>{
+            console.log("finish load");
+    }));
     
     
     

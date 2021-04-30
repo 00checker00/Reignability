@@ -1,5 +1,7 @@
 import { RandomPool } from "./randomPool";
 
+export type CardList = (Card | RandomPool)[];
+
 export class Card {
 
     public card_id: string;
@@ -21,6 +23,8 @@ export class Card {
 
     public next_links: Card | RandomPool | null = null;
     public next_rechts: Card | RandomPool | null = null;
+
+    public visited: Boolean = false;
 
 
 

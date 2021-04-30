@@ -1,5 +1,6 @@
 import { LevelLoader } from "./levelLoader";
-import { Card } from "./card";
+import { Card, CardList } from "./card";
+import { RandomPool } from "./randomPool";
 
 
 export class Game {
@@ -43,7 +44,7 @@ export class Game {
     private left = false;
     private out = false;
 
-    public cardList: Card[];
+    public cardList: CardList;
     public cardIndex = 0;
     public currentCard: Card;
     
@@ -53,7 +54,7 @@ export class Game {
         this.lvlLoad = loader;
 
         this.stage_game = this.lvlLoad.stage_game;
-
+        
 
         this.pillar_social = this.stage_game.getChildByName("pillar_social") as createjs.MovieClip;
         this.pillar_natur = this.stage_game.getChildByName("pillar_natur") as createjs.MovieClip;
@@ -109,6 +110,8 @@ export class Game {
         this.deck.gotoAndPlay("draw");
 
         console.log(this.cardList);
+
+        
         this.card_text.text = this.currentCard.card_text;
         this.card_name.text = this.currentCard.card_name;
         (this.lvlLoad.lib as any).content = this.currentCard.card_id;
@@ -164,11 +167,11 @@ export class Game {
             if(this.cardIndex >= this.cardList.length-1)
             {
                 this.cardIndex = 0;
-                this.currentCard = this.cardList[this.cardIndex];
+                //this.currentCard = this.cardList[this.cardIndex];
             }
             else{
                 this.cardIndex++;
-                this.currentCard = this.cardList[this.cardIndex];
+                //this.currentCard = this.cardList[this.cardIndex];
             }
             
         });

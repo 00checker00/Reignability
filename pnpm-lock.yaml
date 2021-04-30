@@ -9,6 +9,7 @@ specifiers:
   '@types/createjs': ^0.0.29
   '@types/jquery': ^3.5.5
   babel-loader: ^8.2.2
+  babel-regenerator-runtime: ^6.5.0
   copy-webpack-plugin: ^8.1.1
   createjs-def: github:elsassph/createjs-def#feature/animate
   css-loader: ^5.2.4
@@ -24,6 +25,7 @@ specifiers:
   webpack: ^5.35.1
   webpack-cli: ^4.6.0
   webpack-dev-server: ^3.11.2
+  webpack-merge: ^5.7.3
 
 dependencies:
   jquery: 3.6.0
@@ -37,6 +39,7 @@ devDependencies:
   '@types/createjs': 0.0.29
   '@types/jquery': 3.5.5
   babel-loader: 8.2.2_d9b7ef4533e3d3c004af78c89a0b0034
+  babel-regenerator-runtime: 6.5.0
   copy-webpack-plugin: 8.1.1_webpack@5.35.1
   createjs-def: github.com/elsassph/createjs-def/09d1e9e52a8c4a3e3b5f40316f466f131818bdbf
   css-loader: 5.2.4_webpack@5.35.1
@@ -51,6 +54,7 @@ devDependencies:
   webpack: 5.35.1_webpack-cli@4.6.0
   webpack-cli: 4.6.0_ab3389d103c5d77a12ed598bbd247b00
   webpack-dev-server: 3.11.2_webpack-cli@4.6.0+webpack@5.35.1
+  webpack-merge: 5.7.3
 
 packages:
 
@@ -1576,6 +1580,10 @@ packages:
       '@babel/helper-define-polyfill-provider': 0.2.0_@babel+core@7.13.16
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /babel-regenerator-runtime/6.5.0:
+    resolution: {integrity: sha1-DkHNHJ+ARCRm8BXHSf/4upj44RA=}
     dev: true
 
   /balanced-match/1.0.2:
