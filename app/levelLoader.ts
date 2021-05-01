@@ -1,16 +1,18 @@
 import { Game } from "./game";
 import { CardList } from "./card";
 import { Card } from "./card";
-import { loadXML } from "./xmlLoader";
 
-export enum levels {
-        MENU = "menu",
-        CHOOSE = "choose",
-        PANORAMA = "panorama",
-        GAME = "game"
-      }
+export enum levels 
+// eslint-disable-next-line @typescript-eslint/indent
+{
+    MENU = "menu",
+    CHOOSE = "choose",
+    PANORAMA = "panorama",
+    GAME = "game"
+}
 
-export class LevelLoader {
+export class LevelLoader 
+{ 
 
     public lib: AnimateLib;
     public stage: createjs.Stage;
@@ -29,7 +31,8 @@ export class LevelLoader {
 
     // menu // choose // panorama // game
 
-    constructor(lib: AnimateLib, stage: createjs.Stage, decks:{[key:string]:CardList}) {
+    constructor(lib: AnimateLib, stage: createjs.Stage, decks:{[key:string]:CardList}) 
+    {
 
         this.lib = lib;
         this.stage = stage;

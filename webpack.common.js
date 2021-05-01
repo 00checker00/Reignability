@@ -46,13 +46,14 @@ module.exports = {
                         loader: 'file-loader',
                     },
                 ],
-            },
+            }
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
-            template: "app/index.html"
+            template: "app/index.html",
+            favicon: "app/images/fav_icon.png"
         }),
         new CopyPlugin({
             patterns: [
@@ -68,9 +69,11 @@ module.exports = {
             chunkFilename: "[id].css",
         }),
         {
-            apply: (compiler) => {
-                compiler.hooks.beforeCompile.tap("CreateJS_Definition",(compilation)=>{
-                    const data = fs.readFileSync("app/Animate.js","utf8");
+            apply: (compiler) => 
+            {
+                compiler.hooks.beforeCompile.tap("CreateJS_Definition",(compilation)=>
+                {
+                    const data = fs.readFileSync("public/Animate.js","utf8");
                     const definitions = createjs.createDef('Animate', data, 'typescript');
                     mkdirp.sync("_build/@types");
                     fs.writeFileSync("_build/@types/Animate.d.ts",definitions);

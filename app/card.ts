@@ -2,7 +2,8 @@ import { RandomPool } from "./randomPool";
 
 export type CardList = (Card | RandomPool)[];
 
-export class Card {
+export class Card 
+{ 
 
     public card_id: string;
 
@@ -27,8 +28,8 @@ export class Card {
     public visited: Boolean = false;
 
 
-
-    constructor(id: string,vSr: number,vNr: number,vDr: number,vSl: number,vNl: number,vDl: number,cText: string,cName: string,textR: string,textL: string,textM: string) {
+    constructor(id: string,vSr: number,vNr: number,vDr: number,vSl: number,vNl: number,vDl: number,cText: string,cName: string,textR: string,textL: string,textM: string) 
+    {
         
         this.card_id = id;
 
@@ -47,7 +48,6 @@ export class Card {
         this.text_links = textL;
         this.text_mitte = textM;
     }
-
 
 
 }

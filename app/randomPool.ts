@@ -1,6 +1,7 @@
 import { Card } from "./card";
 
-export class RandomPool {
+export class RandomPool 
+{
 
     public count: number;
 
@@ -10,15 +11,21 @@ export class RandomPool {
 
     public pool: (Card | RandomPool)[] = [];
 
-
     constructor(count: number)
-   {
-       this.count = count;
-   }
+    {
+        this.count = count;
+    }
 
-   public shufflePool(): void
-   {
-        this.pool.sort(() => (Math.random() > .5) ? 1 : -1);
-   }
+    public shufflePool(): void
+    {
+        for (let i = this.pool.length - 1; i > 0; i--) 
+        {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = this.pool[i];
+            this.pool[i] = this.pool[j];
+            this.pool[j] = temp;
+        }
+      
+    }
 }
 

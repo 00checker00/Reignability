@@ -1,7 +1,8 @@
 import { LevelLoader } from "./levelLoader";
 import { levels } from "./levelLoader";
 
-export class Choose {
+export class Choose 
+{ 
 
     private lvlLoad: LevelLoader;
 
@@ -12,7 +13,8 @@ export class Choose {
     public stage_choose: createjs.MovieClip;
 
     
-    constructor(loader: LevelLoader) {
+    constructor(loader: LevelLoader) 
+    {
         
         this.lvlLoad = loader;
 
@@ -21,7 +23,8 @@ export class Choose {
         this.player_president = this.stage_choose.getChildByName("player_president") as createjs.MovieClip;
 
 
-        this.button_back.on("pressup",(): void =>{
+        this.button_back.on("pressup",(): void =>
+        {
 
             this.player_president.gotoAndStop("default");
             this.button_back.gotoAndStop("default");
@@ -34,14 +37,14 @@ export class Choose {
         this.handleButton(this.button_back);
 
         this.choose_presidentEvt();
-   
     
 
     }
 
     private choose_presidentEvt(): void
     {
-        this.player_president.on("click",(evt: any): void =>{
+        this.player_president.on("click",(evt: any): void =>
+        {
 
             this.stage_choose.setChildIndex(this.player_president,this.stage_choose.numChildren-1);
 
@@ -50,7 +53,8 @@ export class Choose {
             this.button_next = this.player_president.getChildByName("button_next") as createjs.MovieClip;
             this.button_next.gotoAndStop("default");
 
-            this.button_next.on("pressup",(): void =>{
+            this.button_next.on("pressup",(): void =>
+            {
                 this.player_president.gotoAndStop("default");
                 this.button_back.gotoAndStop("default");
                 this.choose_presidentEvt();
@@ -70,15 +74,18 @@ export class Choose {
     {
         button.mouseChildren = false;
 
-         button.on("mouseleave",(): void =>{
+        button.on("mouseleave",(): void =>
+        {
             button.gotoAndStop("default");
         })
-        button.on("mousedown",(): void =>{
+        button.on("mousedown",(): void =>
+        {
             button.gotoAndStop("hover");
         })
-        button.on("rollout",(): void =>{
+        button.on("rollout",(): void =>
+        {
             button.gotoAndStop("default");
         })
     }
-
+ 
 }
