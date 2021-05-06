@@ -1,3 +1,6 @@
 _build
 public/Animate.js
 app/initAnimate.ts
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
