@@ -20,9 +20,6 @@ export class Panorama
 
         this.stage_panorama = loader.stage_panorama;
         this.pollution_pic = this.stage_panorama.getChildByName("pollution_pic") as Animate.pollution_pic;
-        
-        console.log(this.pollution_pic.instance.getBounds());
-        
 
         //this.pollution_pic.cache(0, 0,this.pollution_pic.instance.getBounds().width,this.pollution_pic.instance.getBounds().height);
         //this.pollution_pic.children[0].snapToPixel = true;

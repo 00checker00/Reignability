@@ -1,6 +1,7 @@
 import { Game } from "./game";
 import { CardList } from "./card";
 import { Card } from "./card";
+import { Menu } from "./menu";
 
 export enum levels 
 // eslint-disable-next-line @typescript-eslint/indent
@@ -8,7 +9,10 @@ export enum levels
     MENU = "menu",
     CHOOSE = "choose",
     PANORAMA = "panorama",
-    GAME = "game"
+    GAME = "game",
+    PAUSE = "pause",
+    CONTINUE = "continue",
+    LOSE = "lose"
 }
 
 export class LevelLoader 
@@ -25,6 +29,7 @@ export class LevelLoader
 
 
     public game: Game;
+    public menu: Menu;
 
     private decks:{[key:string]:CardList};
 
@@ -68,7 +73,8 @@ export class LevelLoader
         {
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_panorama);
-            this.current_stage = this.stage_panorama;
+            this.stage_panorama.play();
+        
         }
         if(value == levels.GAME)
         {
@@ -87,6 +93,23 @@ export class LevelLoader
                 this.game.currentCard.visited = true;
             }
 
+        }
+        if(value == levels.PAUSE)
+        {
+            this.stage.removeChild(this.current_stage);
+            this.stage.addChild(this.stage_menu);
+            this.current_stage = this.stage_menu;
+
+            this.menu.setPause(true);
+        }
+        if(value == levels.CONTINUE)
+        {
+            this.stage.removeChild(this.current_stage);
+            this.stage.addChild(this.stage_game);
+            this.current_stage = this.stage_game;
+            this.game.currentCard.visited = false;
+            this.game.currentCard = this.game.pauseCard;
+            this.game.setDisplayCard(this.game.pauseCard);
         }
 
     }

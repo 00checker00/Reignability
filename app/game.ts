@@ -1,4 +1,4 @@
-import { LevelLoader } from "./levelLoader";
+import { LevelLoader, levels } from "./levelLoader";
 import { Card, CardList } from "./card";
 import { RandomPool } from "./randomPool";
 
@@ -6,6 +6,11 @@ import { RandomPool } from "./randomPool";
 export class Game 
 {
     private lvlLoad: LevelLoader;
+
+    public back: createjs.MovieClip;
+
+    public buff1:  createjs.MovieClip;
+
 
     public pillar_social: createjs.MovieClip;
     public pillar_natur: createjs.MovieClip;
@@ -45,6 +50,7 @@ export class Game
 
     public cardList: CardList;
     public currentCard: Card;
+    public pauseCard:Card;
     //public cardIndex = 0;
 
     public fontS = 50;
@@ -56,6 +62,7 @@ export class Game
 
         this.stage_game = this.lvlLoad.stage_game;
 
+        this.back = this.stage_game.getChildByName("back") as createjs.MovieClip;
 
         this.pillar_social = this.stage_game.getChildByName("pillar_social") as createjs.MovieClip;
         this.pillar_natur = this.stage_game.getChildByName("pillar_natur") as createjs.MovieClip;
@@ -104,7 +111,13 @@ export class Game
             this.out = false;
         })
 
-        this.stage_game.mouseChildren = false;
+        this.handleButton(this.back);
+        this.back.on("pressup",(): void =>
+        {
+            this.lvlLoad.load(levels.PAUSE);   
+        })
+        
+        //this.stage_game.mouseChildren = false;
     }
 
 
@@ -122,9 +135,9 @@ export class Game
 
         createjs.Ticker.on("tick", (): void => 
         {
-
+            
             const mouseX = this.stage_game.globalToLocal(this.lvlLoad.stage.mouseX, this.lvlLoad.stage.mouseY).x;
-
+            (this.lvlLoad.lib as any).content = this.currentCard.card_id;
 
             if (this.deck.currentLabel == "ready" && !this.out) 
             {
@@ -170,8 +183,8 @@ export class Game
         {
 
             //Touch Reset
-            this.lvlLoad.stage.mouseX = this.lvlLoad.stage.getBounds().width / 2;
-
+            this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
+        
 
             if (this.right) 
             {
@@ -188,6 +201,44 @@ export class Game
                 if (this.currentCard instanceof Card) 
                 {
                     this.currentCard = this.currentCard.next_rechts as Card;
+                    (this.lvlLoad.lib as any).content = this.currentCard.card_id;
+                    this.currentCard.visited = true;
+                }
+                if (this.currentCard instanceof RandomPool) 
+                {
+                    if (this.currentCard.index < this.currentCard.count) 
+                    {
+                        const randomCard = this.currentCard.pool[this.currentCard.index];
+                        this.currentCard.index++;
+                        this.currentCard = randomCard as Card;
+                        this.setDisplayCard(this.currentCard);
+                    }
+                    else 
+                    {
+                        this.currentCard.index = 0;
+                        this.currentCard = this.currentCard.next as Card;
+                    }
+                }
+               
+
+            }
+
+            if (this.left) 
+            {
+                this.deck.gotoAndPlay("discard_left");
+                this.deck_content_text.text = " ";
+                this.card_text.text = " ";
+                this.card_name.text = " ";
+                this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
+                this.left = false;
+                this.card_text.font = "50px 'OCR A Extended'";
+                this.fontS = 50;
+
+
+                if (this.currentCard instanceof Card) 
+                {
+                    this.currentCard = this.currentCard.next_links as Card;
+                    (this.lvlLoad.lib as any).content = this.currentCard.card_id;
                     this.currentCard.visited = true;
                 }
                 if (this.currentCard instanceof RandomPool) 
@@ -204,39 +255,7 @@ export class Game
                         this.currentCard = this.currentCard.next as Card;
                     }
                 }
-
-
-            }
-
-            if (this.left) 
-            {
-                this.deck.gotoAndPlay("discard_left");
-                this.deck_content_text.text = " ";
-                this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
-                this.left = false;
-                this.card_text.font = "50px 'OCR A Extended'";
-                this.fontS = 50;
-
-
-                if (this.currentCard instanceof Card) 
-                {
-                    this.currentCard = this.currentCard.next_links as Card;
-                }
-                if (this.currentCard instanceof RandomPool) 
-                {
-                    if (this.currentCard.index < this.currentCard.count) 
-                    {
-                        const randomCard = this.currentCard.pool[this.currentCard.index];
-                        this.currentCard.index++;
-                        this.currentCard = randomCard as Card;
-                    }
-                    else 
-                    {
-                        this.currentCard.index = 0;
-                        this.currentCard = this.currentCard.next as Card;
-                    }
-                }
-
+               
             }
 
 
@@ -385,6 +404,28 @@ export class Game
             }
 
         }); 
+    }
+
+    private handleButton(button: createjs.MovieClip): void
+    {
+        button.mouseChildren = false;
+
+        button.on("mouseleave",(): void =>
+        {
+            button.gotoAndStop("default");
+        })
+        button.on("mousedown",(): void =>
+        {
+            button.gotoAndStop("hover");
+            
+            this.pauseCard = this.currentCard;
+            console.log(this.pauseCard);
+
+        })
+        button.on("rollout",(): void =>
+        {
+            button.gotoAndStop("default");
+        })
     }
 
 }

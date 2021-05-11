@@ -8,6 +8,12 @@ export class Menu
     public button_what: createjs.MovieClip;
     public button_option: createjs.MovieClip;
 
+    //PAUSE
+    public logo_pause: createjs.MovieClip;
+    public button_cont: createjs.MovieClip;
+    public button_newgame: createjs.MovieClip;
+    public button_menu: createjs.MovieClip;
+
     private lvlLoad: LevelLoader;
 
     constructor(loader: LevelLoader) 
@@ -19,11 +25,39 @@ export class Menu
         this.button_play = stage_menu.getChildByName("button_play") as createjs.MovieClip;
         this.button_what = stage_menu.getChildByName("button_what") as createjs.MovieClip;
         this.button_option = stage_menu.getChildByName("button_option") as createjs.MovieClip;
+
+        //PAUSE
+        this.logo_pause = stage_menu.getChildByName("logo_pause") as createjs.MovieClip;
+        this.button_cont = stage_menu.getChildByName("button_cont") as createjs.MovieClip;
+        this.button_newgame = stage_menu.getChildByName("button_newgame") as createjs.MovieClip;
+        this.button_menu = stage_menu.getChildByName("button_menu") as createjs.MovieClip;
+
+        this.logo_pause.visible = false;
+        this.button_cont.visible = false;
+        this.button_newgame.visible = false;
+        this.button_menu.visible = false;
         
+        this.handleButton(this.button_cont);
+        this.handleButton(this.button_newgame);
+        this.handleButton(this.button_menu);
+
         this.handleButton(this.button_play);
         this.handleButton(this.button_what);
         this.handleButton(this.button_option);
+
         
+    }
+
+    public setPause(bool:boolean): void
+    {
+        this.button_play.visible = !bool;
+        this.button_what.visible = !bool;
+        this.button_option.visible = !bool;
+
+        this.logo_pause.visible = bool;
+        this.button_cont.visible = bool;
+        this.button_newgame.visible = bool;
+        this.button_menu.visible = bool;
     }
 
     private handleButton(button: createjs.MovieClip): void
@@ -48,10 +82,26 @@ export class Menu
 
             if(button == this.button_play)
                 this.lvlLoad.load(levels.CHOOSE);
+ 
+            if(button == this.button_cont)
+            {
+                this.setPause(false);
+                this.lvlLoad.load(levels.CONTINUE);
+            }
+                
             
-            //var arr1 = ["a", "b", "c", "d","f","g"];
-            //arr1.sort(() => (Math.random() > .5) ? 1 : -1);
-            //console.log(arr1);
+            if(button == this.button_newgame)
+            {
+                this.setPause(false);
+                this.lvlLoad.load(levels.CHOOSE);
+            }
+                
+
+            if(button == this.button_menu)
+            {
+                this.setPause(false);
+            }
+                
         })
 
     }

@@ -26,12 +26,14 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     //Main-Menu
     levelLoad.load(levels.MENU);
 
-    new Menu(levelLoad);
+    const menu = new Menu(levelLoad);
     new Choose(levelLoad);
     new Panorama(levelLoad);
     const game = new Game(levelLoad);
 
+
     levelLoad.game = game;
+    levelLoad.menu = menu;
     
 }
 

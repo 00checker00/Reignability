@@ -130,7 +130,6 @@ export async function loadXML(url: string): Promise<(Card | RandomPool)[]>
                 }
                 const list = Object.values(cards).sort((card1,card2)=> card1===root?-1:card2===root?1:0);
                 resolve(list);
-                console.log(list);
             }
         };
        
