@@ -156,8 +156,6 @@ export class Game
                     this.deck.gotoAndPlay("move_right");
                     this.right = true;
                     this.setDisplayCard(this.currentCard);
-
-                    //console.log(this.currentCard.value_dollar_rechts,this.currentCard.value_natur_rechts,this.currentCard.value_social_rechts);
                 }
                 if (mouseX < 190 && !this.left) 
                 {
@@ -175,6 +173,7 @@ export class Game
                 this.deck_content_text.text = this.currentCard.text_mitte;
             }
             this.checkValues();
+
 
         });
 
@@ -219,7 +218,8 @@ export class Game
                         this.currentCard = this.currentCard.next as Card;
                     }
                 }
-               
+                if(this.value_social <= 0 || this.value_dollar <= 0 || this.value_natur <= 0 || this.value_social >= 1 || this.value_natur >= 1 || this.value_dollar >= 1)
+                    this.lvlLoad.load(levels.LOSE);
 
             }
 
@@ -255,7 +255,8 @@ export class Game
                         this.currentCard = this.currentCard.next as Card;
                     }
                 }
-               
+                if(this.value_social <= 0 || this.value_dollar <= 0 || this.value_natur <= 0 || this.value_social >= 1 || this.value_natur >= 1 || this.value_dollar >= 1)
+                    this.lvlLoad.load(levels.LOSE);
             }
 
 
@@ -340,9 +341,10 @@ export class Game
 
     public setValues(vs: number, vn: number, vd: number): void 
     {
-        this.value_social += vs;
-        this.value_natur += vn;
-        this.value_dollar += vd;
+        const fakeFaktor = 5;
+        this.value_social += vs*fakeFaktor;
+        this.value_natur += vn*fakeFaktor;
+        this.value_dollar += vd*fakeFaktor;
     }
 
     public checkValues(): void 
@@ -358,6 +360,8 @@ export class Game
         this.colorBalken(this.social_balken, this.value_social, unter, ober);
         this.colorBalken(this.natur_balken, this.value_natur, unter, ober);
         this.colorBalken(this.dollar_balken, this.value_dollar, unter, ober);
+
+      
     }
 
     // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types

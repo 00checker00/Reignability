@@ -2,6 +2,7 @@ import { Game } from "./game";
 import { CardList } from "./card";
 import { Card } from "./card";
 import { Menu } from "./menu";
+import { death, Lose } from "./lose";
 
 export enum levels 
 // eslint-disable-next-line @typescript-eslint/indent
@@ -24,12 +25,14 @@ export class LevelLoader
     public stage_choose: createjs.MovieClip;
     public stage_panorama: createjs.MovieClip;
     public stage_game: createjs.MovieClip;
+    public stage_lose: createjs.MovieClip;
 
     public current_stage: createjs.MovieClip;    
 
 
     public game: Game;
     public menu: Menu;
+    public lose: Lose;
 
     private decks:{[key:string]:CardList};
 
@@ -45,6 +48,7 @@ export class LevelLoader
         this.stage_choose = new lib.stage_choose();
         this.stage_panorama = new lib.stage_panorama();
         this.stage_game = new lib.stage_game();
+        this.stage_lose = new lib.stage_lose();
 
         this.decks = decks;
 
@@ -110,6 +114,29 @@ export class LevelLoader
             this.game.currentCard.visited = false;
             this.game.currentCard = this.game.pauseCard;
             this.game.setDisplayCard(this.game.pauseCard);
+        }
+        if(value == levels.LOSE)
+        {
+            this.stage.removeChild(this.current_stage);
+            this.stage.addChild(this.stage_lose);
+            this.current_stage = this.stage_lose;
+
+            (this.lib as any).content = "ID_003";
+            this.stage_lose.play();
+       
+            if(this.game.value_social <= 0)
+                this.lose.showDeath(death.LOW_SOCIAL);
+            else if(this.game.value_dollar <= 0)
+                this.lose.showDeath(death.LOW_DOLLAR);
+            else if(this.game.value_natur <= 0)
+                this.lose.showDeath(death.LOW_NATUR);
+            else if(this.game.value_social >= 1)
+                this.lose.showDeath(death.HIGH_SOCIAL);
+            else if(this.game.value_natur >= 1)
+                this.lose.showDeath(death.HIGH_NATUR);
+            else if(this.game.value_dollar >= 1)
+                this.lose.showDeath(death.HIGH_DOLLAR);
+
         }
 
     }

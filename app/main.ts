@@ -8,6 +8,7 @@ import { Menu } from "./menu";
 import { Panorama } from "./panorama";
 import { Game } from "./game";
 import { loadXML } from "./xmlLoader";
+import { Lose } from "./lose";
 
 let stage: createjs.Stage;
 
@@ -30,10 +31,11 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     new Choose(levelLoad);
     new Panorama(levelLoad);
     const game = new Game(levelLoad);
-
+    const lose = new Lose(levelLoad);
 
     levelLoad.game = game;
     levelLoad.menu = menu;
+    levelLoad.lose = lose
     
 }
 
