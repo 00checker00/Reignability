@@ -52,36 +52,42 @@ export class Lose
     {
         if(tod == death.HIGH_DOLLAR)
         {
+            (this.lvlLoad.lib as any).content = "ID_003";
             this.end_dollar.gotoAndStop("full");
             this.lose_text.text = "Die Finanzbehörde hat Ihre Papiere gefunden. Sie haben Millionen von Steuergeldern veruntreut. Sie fliehen ins Exil!";
             this.lose_name.text = "Der Ruhestand wartet auf Sie!";
         }
         if(tod == death.LOW_DOLLAR)
         {
+            (this.lvlLoad.lib as any).content = "ID_006";
             this.end_dollar.gotoAndStop("empty");
             this.lose_text.text = "Sie haben das Land in eine neue Wirtschaftskrise geführt. Ihr Amt ist in dieser Position für Sie nicht mehr tragbar.";
             this.lose_name.text = "Der Geldverschwender";
         }
         if(tod == death.HIGH_NATUR)
         {
+            (this.lvlLoad.lib as any).content = "ID_008";
             this.end_natur.gotoAndStop("full");
             this.lose_text.text = "Sie erhalten eine Auszeichnung für nachhaltige umweltfreundliche Politik. Sie versterben plötzlich...";
             this.lose_name.text = "Mit der Spitze ins Herz!";
         }
         if(tod == death.LOW_NATUR)
         {
+            (this.lvlLoad.lib as any).content = "ID_004";
             this.end_natur.gotoAndStop("empty");
             this.lose_text.text = "Ein Erdriss unter dem Parlament, durch eine Naturkatastrophe ausgelöst, reißt Sie und dessen Mitglieder mit!";
             this.lose_name.text = "Die Hölle wartet...";
         }
         if(tod == death.HIGH_SOCIAL)
         {
+            (this.lvlLoad.lib as any).content = "ID_005";
             this.end_social.gotoAndStop("full");
             this.lose_text.text = " Ihre Anhänger erstürmen das Kapitol. Viele Beamte lassen ihr Leben. Sie werden zur Rechenschaft gezogen.";
             this.lose_name.text = "Vereinte Provinzen! First!";
         }
         if(tod == death.LOW_SOCIAL)
         {
+            (this.lvlLoad.lib as any).content = "ID_007";
             this.end_social.gotoAndStop("empty");
             this.lose_text.text = "Sie verlieren eine Menge an Parteiunterstützer. Ein Impeachment wird gegen Sie eingeleitet.";
             this.lose_name.text = "Der Rauswurf aus dem grünen Haus";
