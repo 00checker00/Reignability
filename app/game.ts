@@ -91,12 +91,6 @@ export class Game
         this.card_name.text = "";
         this.deck_content_text.text = "";
 
-
-        this.card_text.text = "     ";
-        this.card_name.text = "     ";
-
-        this.deck_content_text.text = " ";
-
         this.stage_game.on("rollout", (): void => 
         {
             this.right = false;
@@ -104,6 +98,7 @@ export class Game
             this.out = true;
             this.deck.gotoAndStop("ready");
             this.deck_content_text.text = " ";
+            this.resetDot();
         })
 
         this.stage_game.on("rollover", (): void => 
@@ -112,18 +107,15 @@ export class Game
         })
 
         this.handleButton(this.back);
+
         this.back.on("pressup",(): void =>
         {
             this.lvlLoad.load(levels.PAUSE);   
         })
-        
-        //this.stage_game.mouseChildren = false;
     }
-
 
     public startGame(): void 
     {
-
         this.deck.gotoAndPlay("draw");
 
         this.card_text.text = this.currentCard.card_text;
@@ -180,23 +172,28 @@ export class Game
         // Karte los lassen 
         this.stage_game.on("pressup", (): void => 
         {
-
+            this.card_text.font = "50px 'OCR A Extended'";
+            this.fontS = 50;
             //Touch Reset
             this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
-        
 
-            if (this.right) 
+            if (this.right || this.left) 
             {
-                this.deck.gotoAndPlay("discard_right");
-                this.deck_content_text.text = " ";
-                this.card_text.text = " ";
-                this.card_name.text = " ";
-                this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
-                this.right = false;
-                this.card_text.font = "50px 'OCR A Extended'";
-                this.fontS = 50;
 
+                if(this.right)
+                {
+                    this.deck.gotoAndPlay("discard_right");
+                    this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
+                    this.right = false;
+                }
 
+                if(this.left)
+                {
+                    this.deck.gotoAndPlay("discard_left");
+                    this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
+                    this.left = false;
+                }
+                
                 if (this.currentCard instanceof Card) 
                 {
                     this.currentCard = this.currentCard.next_rechts as Card;
@@ -221,44 +218,12 @@ export class Game
                 if(this.value_social <= 0 || this.value_dollar <= 0 || this.value_natur <= 0 || this.value_social >= 1 || this.value_natur >= 1 || this.value_dollar >= 1)
                     this.lvlLoad.load(levels.LOSE);
 
-            }
-
-            if (this.left) 
-            {
-                this.deck.gotoAndPlay("discard_left");
                 this.deck_content_text.text = " ";
                 this.card_text.text = " ";
                 this.card_name.text = " ";
-                this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
-                this.left = false;
                 this.card_text.font = "50px 'OCR A Extended'";
                 this.fontS = 50;
-
-
-                if (this.currentCard instanceof Card) 
-                {
-                    this.currentCard = this.currentCard.next_links as Card;
-                    (this.lvlLoad.lib as any).content = this.currentCard.card_id;
-                    this.currentCard.visited = true;
-                }
-                if (this.currentCard instanceof RandomPool) 
-                {
-                    if (this.currentCard.index < this.currentCard.count) 
-                    {
-                        const randomCard = this.currentCard.pool[this.currentCard.index];
-                        this.currentCard.index++;
-                        this.currentCard = randomCard as Card;
-                    }
-                    else 
-                    {
-                        this.currentCard.index = 0;
-                        this.currentCard = this.currentCard.next as Card;
-                    }
-                }
-                if(this.value_social <= 0 || this.value_dollar <= 0 || this.value_natur <= 0 || this.value_social >= 1 || this.value_natur >= 1 || this.value_dollar >= 1)
-                    this.lvlLoad.load(levels.LOSE);
             }
-
 
         });
 
@@ -341,10 +306,17 @@ export class Game
 
     public setValues(vs: number, vn: number, vd: number): void 
     {
-        const fakeFaktor = 5;
+        const fakeFaktor = 1;
         this.value_social += vs*fakeFaktor;
         this.value_natur += vn*fakeFaktor;
         this.value_dollar += vd*fakeFaktor;
+    }
+
+    public resetValues(): void 
+    {
+        this.value_social = 0.5;
+        this.value_natur = 0.5;
+        this.value_dollar = 0.5;
     }
 
     public checkValues(): void 
@@ -381,7 +353,9 @@ export class Game
 
         // these are equivalent, 1000ms / 40fps = 25ms
         //createjs.Ticker.interval = 1000;
-        createjs.Ticker.framerate = 20;
+        //createjs.Ticker.framerate = 60;
+
+        this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
 
         let i = 1;
         let count = 0;
@@ -421,10 +395,7 @@ export class Game
         button.on("mousedown",(): void =>
         {
             button.gotoAndStop("hover");
-            
             this.pauseCard = this.currentCard;
-            console.log(this.pauseCard);
-
         })
         button.on("rollout",(): void =>
         {

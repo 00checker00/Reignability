@@ -26,8 +26,9 @@ export class Panorama
        
         const tween: createjs.Tween = createjs.Tween.get(this.pollution_pic, {loop: 1, reversed:false, bounce:true}).to({x:-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width}, 300);
         this.stage_panorama.timeline.addTween(tween);
-
+        
         this.pollution_pic.x = 0;
+       
 
         this.hold_circle = new this.lvlLoad.lib.hold_circle();
 

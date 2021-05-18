@@ -85,6 +85,7 @@ export class LevelLoader
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_game);
             this.current_stage = this.stage_game;
+            this.game.resetValues();
             this.game.shuffleAnimation();
 
 

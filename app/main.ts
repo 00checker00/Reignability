@@ -35,8 +35,10 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
 
     levelLoad.game = game;
     levelLoad.menu = menu;
-    levelLoad.lose = lose
-    
+    levelLoad.lose = lose;
+
+    //createjs.Ticker.framerate = 30;
+    //createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 }
 
 export function init(): void 
@@ -49,7 +51,7 @@ export function init(): void
 
     initAnimate(stage).then((lib: AnimateLib)=>start(lib,stage).then(()=>
     {
-        console.log("finish loading");
+        console.info("finish loading");
     }));
     
 }
