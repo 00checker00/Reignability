@@ -179,24 +179,15 @@ export class Game
 
             if (this.right || this.left) 
             {
-
-                if(this.right)
-                {
-                    this.deck.gotoAndPlay("discard_right");
-                    this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
-                    this.right = false;
-                }
-
-                if(this.left)
-                {
-                    this.deck.gotoAndPlay("discard_left");
-                    this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
-                    this.left = false;
-                }
                 
                 if (this.currentCard instanceof Card) 
                 {
-                    this.currentCard = this.currentCard.next_rechts as Card;
+                    if(this.right)
+                        this.currentCard = this.currentCard.next_rechts as Card;
+
+                    if(this.left)
+                        this.currentCard = this.currentCard.next_links as Card;
+
                     (this.lvlLoad.lib as any).content = this.currentCard.card_id;
                     this.currentCard.visited = true;
                 }
@@ -215,6 +206,21 @@ export class Game
                         this.currentCard = this.currentCard.next as Card;
                     }
                 }
+
+                if(this.right)
+                {
+                    this.deck.gotoAndPlay("discard_right");
+                    this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
+                    this.right = false;
+                }
+
+                if(this.left)
+                {
+                    this.deck.gotoAndPlay("discard_left");
+                    this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
+                    this.left = false;
+                }
+
                 if(this.value_social <= 0 || this.value_dollar <= 0 || this.value_natur <= 0 || this.value_social >= 1 || this.value_natur >= 1 || this.value_dollar >= 1)
                     this.lvlLoad.load(levels.LOSE);
 
