@@ -125,6 +125,8 @@ export class Game
         this.deck_content.gotoAndStop(this.currentCard.card_id);
         this.deck_content_text.text = this.currentCard.text_mitte;
 
+        this.card_text.font = "50px 'OCR A Extended'";
+
         createjs.Ticker.on("tick", (): void => 
         {
             
@@ -172,14 +174,15 @@ export class Game
         // Karte los lassen 
         this.stage_game.on("pressup", (): void => 
         {
-            this.card_text.font = "50px 'OCR A Extended'";
-            this.fontS = 50;
+            
             //Touch Reset
             this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
 
             if (this.right || this.left) 
             {
-                
+                this.card_text.font = "50px 'OCR A Extended'";
+                this.fontS = 50;
+
                 if (this.currentCard instanceof Card) 
                 {
                     if(this.right)

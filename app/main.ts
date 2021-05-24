@@ -9,6 +9,7 @@ import { Panorama } from "./panorama";
 import { Game } from "./game";
 import { loadXML } from "./xmlLoader";
 import { Lose } from "./lose";
+import { What } from "./what";
 
 let stage: createjs.Stage;
 
@@ -21,7 +22,7 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     stage.mouseMoveOutside = true;
     stage.snapToPixel = true;
 
-    const decks = Object.fromEntries(await Promise.all(["president"].map(async (deck)=> [deck,await loadXML(`/xml/question_${deck}.graphml`)])));
+    const decks = Object.fromEntries(await Promise.all(["president","activist","joe"].map(async (deck)=> [deck,await loadXML(`/xml/question_${deck}.graphml`)])));
 
     levelLoad  = new LevelLoader(lib, stage, decks); 
     //Main-Menu
@@ -32,10 +33,12 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     new Panorama(levelLoad);
     const game = new Game(levelLoad);
     const lose = new Lose(levelLoad);
+    const what= new What(levelLoad);
 
     levelLoad.game = game;
     levelLoad.menu = menu;
     levelLoad.lose = lose;
+    levelLoad.what = what;
 
     //createjs.Ticker.framerate = 30;
     //createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;

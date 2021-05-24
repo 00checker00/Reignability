@@ -82,6 +82,9 @@ export class Menu
 
             if(button == this.button_play)
                 this.lvlLoad.load(levels.CHOOSE);
+
+            if(button == this.button_what)
+                this.lvlLoad.load(levels.WHAT);
  
             if(button == this.button_cont)
             {

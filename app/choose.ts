@@ -8,7 +8,13 @@ export class Choose
 
     public button_back: createjs.MovieClip;
     public player_president: createjs.MovieClip;
-    public button_next?: createjs.MovieClip;
+    public player_activist: createjs.MovieClip;
+    public player_joe: createjs.MovieClip;
+
+    public button_next: createjs.MovieClip;
+
+    public lock_activist: createjs.MovieClip;
+    public lock_joe: createjs.MovieClip;
 
     public stage_choose: createjs.MovieClip;
 
@@ -21,44 +27,81 @@ export class Choose
         this.stage_choose = this.lvlLoad.stage_choose;
         this.button_back = this.stage_choose.getChildByName("button_back") as createjs.MovieClip;
         this.player_president = this.stage_choose.getChildByName("player_president") as createjs.MovieClip;
+        this.player_activist = this.stage_choose.getChildByName("player_activist") as createjs.MovieClip;
+        this.player_joe = this.stage_choose.getChildByName("player_joe") as createjs.MovieClip;
+
+
+        this.lock_activist = this.stage_choose.getChildByName("lock_activist") as createjs.MovieClip;
+        this.lock_joe = this.stage_choose.getChildByName("lock_joe") as createjs.MovieClip;
+
+        //Später mit Achievement ablösen und nicht einfach wegklicken
+        this.lock_activist.on("pressup",(): void =>
+        {
+            this.lock_activist.visible = false;
+        });
+
+        this.lock_joe.on("pressup",(): void =>
+        {
+            this.lock_joe.visible = false;
+        });
 
 
         this.button_back.on("pressup",(): void =>
         {
 
             this.player_president.gotoAndStop("default");
+            this.player_activist.gotoAndStop("default");
+            this.player_joe.gotoAndStop("default");
             this.button_back.gotoAndStop("default");
-            this.choose_presidentEvt();
+            this.choose_player(this.player_president);
+            this.choose_player(this.player_activist);
+            this.choose_player(this.player_joe);
             this.lvlLoad.load(levels.MENU);
             //this.lvlLoad.load("menu");
             
-        })
+        });
 
         this.handleButton(this.button_back);
 
-        this.choose_presidentEvt();
-    
-
+        this.choose_player(this.player_president);
+        this.choose_player(this.player_activist);
+        this.choose_player(this.player_joe);
     }
 
-    private choose_presidentEvt(): void
+    private choose_player(player: createjs.MovieClip): void
     {
-        this.player_president.on("click",(evt: any): void =>
+        player.on("click",(evt: any): void =>
         {
 
-            this.stage_choose.setChildIndex(this.player_president,this.stage_choose.numChildren-1);
+            this.stage_choose.setChildIndex(player,this.stage_choose.numChildren-1);
+            player.gotoAndPlay("zoom");
 
-            this.player_president.gotoAndPlay("zoom");
-
-            this.button_next = this.player_president.getChildByName("button_next") as createjs.MovieClip;
+            this.button_next = player.getChildByName("button_next") as createjs.MovieClip;
             this.button_next.gotoAndStop("default");
 
             this.button_next.on("pressup",(): void =>
             {
                 this.player_president.gotoAndStop("default");
+                this.player_activist.gotoAndStop("default");
+                this.player_joe.gotoAndStop("default");
+          
                 this.button_back.gotoAndStop("default");
-                this.choose_presidentEvt();
-                (this.lvlLoad.lib as any).player = "president";
+                if(player == this.player_president)
+                {
+                    this.choose_player(this.player_president);
+                    (this.lvlLoad.lib as any).player = "president";
+                }
+                if(player == this.player_activist)
+                {
+                    this.choose_player(this.player_activist);
+                    (this.lvlLoad.lib as any).player = "activist";
+                }
+                if(player == this.player_joe)
+                {
+                    this.choose_player(this.player_joe);
+                    (this.lvlLoad.lib as any).player = "joe";
+                }
+
                 this.lvlLoad.load(levels.PANORAMA);
                 
             })

@@ -3,6 +3,7 @@ import { CardList } from "./card";
 import { Card } from "./card";
 import { Menu } from "./menu";
 import { death, Lose } from "./lose";
+import { What } from "./what";
 
 export enum levels 
 // eslint-disable-next-line @typescript-eslint/indent
@@ -13,7 +14,8 @@ export enum levels
     GAME = "game",
     PAUSE = "pause",
     CONTINUE = "continue",
-    LOSE = "lose"
+    LOSE = "lose",
+    WHAT = "what"
 }
 
 export class LevelLoader 
@@ -26,6 +28,7 @@ export class LevelLoader
     public stage_panorama: createjs.MovieClip;
     public stage_game: createjs.MovieClip;
     public stage_lose: createjs.MovieClip;
+    public stage_what: createjs.MovieClip;
 
     public current_stage: createjs.MovieClip;    
 
@@ -33,6 +36,7 @@ export class LevelLoader
     public game: Game;
     public menu: Menu;
     public lose: Lose;
+    public what: What;
 
     private decks:{[key:string]:CardList};
 
@@ -49,6 +53,7 @@ export class LevelLoader
         this.stage_panorama = new lib.stage_panorama();
         this.stage_game = new lib.stage_game();
         this.stage_lose = new lib.stage_lose();
+        this.stage_what = new lib.stage_what();
 
         this.decks = decks;
 
@@ -56,6 +61,7 @@ export class LevelLoader
 
     public async load(value: levels): Promise<void>
     {
+        console.log((this.lib as any).player);
         if(this.current_stage != null)
         {
             this.stage.removeChild(this.current_stage);
@@ -67,8 +73,15 @@ export class LevelLoader
             this.stage.addChild(this.stage_menu);
             this.current_stage = this.stage_menu;
         }
+        if(value==levels.WHAT)
+        {
+            this.stage.removeChild(this.current_stage);
+            this.stage.addChild(this.stage_what);
+            this.current_stage = this.stage_what;
+        }
         if(value == levels.CHOOSE)
         {
+            (this.lib as any).player = "None"
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_choose);
             this.current_stage = this.stage_choose;
@@ -92,6 +105,22 @@ export class LevelLoader
             if((this.lib as any).player === "president")
             {
                 this.game.current_player = "president";
+
+                this.game.cardList = this.decks[this.game.current_player];
+                this.game.currentCard = this.game.cardList[0] as Card;
+                this.game.currentCard.visited = true;
+            }
+            if((this.lib as any).player === "activist")
+            {
+                this.game.current_player = "activist";
+
+                this.game.cardList = this.decks[this.game.current_player];
+                this.game.currentCard = this.game.cardList[0] as Card;
+                this.game.currentCard.visited = true;
+            }
+            if((this.lib as any).player === "joe")
+            {
+                this.game.current_player = "joe";
 
                 this.game.cardList = this.decks[this.game.current_player];
                 this.game.currentCard = this.game.cardList[0] as Card;
@@ -122,7 +151,6 @@ export class LevelLoader
             this.stage.addChild(this.stage_lose);
             this.current_stage = this.stage_lose;
 
-            (this.lib as any).content = "ID_003";
             this.stage_lose.play();
        
             if(this.game.value_social <= 0)

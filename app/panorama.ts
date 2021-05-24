@@ -64,7 +64,8 @@ export class Panorama
         this.pollution_pic.on("pressmove",(evt: any): void =>
         {
             this.pollution_pic.x = Math.max(Math.min(this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
-            
+            // bild.x = MAX(MIN(mouseX+offsetX,0) , - bild.breite + stage.breite)
+            // bild.y = MAX(MIN(mouseY+offsetY,0) , - bild.höhe + stage.höhe)
         });
 
 
