@@ -53,8 +53,9 @@ export class What
             neue_zeile.content_pic.gotoAndStop(index);
             neue_zeile.content_pic.x = this.content_pic.x;
 
-            neue_zeile.content_pic.cache(0,0,460,450,2);
-          
+            neue_zeile.content_pic.cache(0,0,460,850,2);
+            //neue_zeile.content_pic.snapToPixel = true;
+            //neue_zeile.content_pic.updateCache();
 
             neue_zeile.y = posY;
 
@@ -62,8 +63,9 @@ export class What
             
             this.zeile.addChild(neue_zeile);
         }
-        	
-        
+        this.zeile.cache(-100,-100,this.zeile.getBounds().width+200,this.zeile.getBounds().height+200);	
+        this.zeile.updateCache();
+
         this.zeile.on("mousedown",(evt: any): void => 
         {
             this.offset = {x: this.zeile.x - this.stage_what.globalToLocal(evt.stageX,evt.stageY).x, y: this.zeile.y - this.stage_what.globalToLocal(evt.stageX,evt.stageY).y};
@@ -72,6 +74,7 @@ export class What
         this.zeile.on("pressmove",(evt: any): void =>
         {
             this.zeile.y =  this.stage_what.globalToLocal(evt.stageX,evt.stageY).y + this.offset.y;
+            this.zeile.updateCache();
         });
         
     }

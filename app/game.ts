@@ -93,12 +93,13 @@ export class Game
 
         this.stage_game.on("rollout", (): void => 
         {
-            this.right = false;
-            this.left = false;
             this.out = true;
-            this.deck.gotoAndStop("ready");
-            this.deck_content_text.text = " ";
-            this.resetDot();
+
+            //this.right = false;
+            //this.left = false;
+            //this.deck.gotoAndStop("ready");
+            //this.deck_content_text.text = " ";
+            //this.resetDot();
         })
 
         this.stage_game.on("rollover", (): void => 
@@ -125,7 +126,7 @@ export class Game
         this.deck_content.gotoAndStop(this.currentCard.card_id);
         this.deck_content_text.text = this.currentCard.text_mitte;
 
-        this.card_text.font = "50px 'OCR A Extended'";
+        this.card_text.font = "50px 'OCRAEXT'";
 
         createjs.Ticker.on("tick", (): void => 
         {
@@ -141,7 +142,7 @@ export class Game
 
 
                 while (this.card_text.getBounds().height > 300)
-                    this.card_text.font = --this.fontS + "px 'OCR A Extended'";
+                    this.card_text.font = --this.fontS + "px 'OCRAEXT'";
 
 
                 //Swipen nach Rechts oder Links
@@ -177,10 +178,20 @@ export class Game
             
             //Touch Reset
             this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
+           
+            if(this.right)
+            {
+                this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
+            }
+
+            if(this.left)
+            {
+                this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
+            }
 
             if (this.right || this.left) 
             {
-                this.card_text.font = "50px 'OCR A Extended'";
+                this.card_text.font = "50px 'OCRAEXT'";
                 this.fontS = 50;
 
                 if (this.currentCard instanceof Card) 
@@ -201,7 +212,7 @@ export class Game
                         const randomCard = this.currentCard.pool[this.currentCard.index];
                         this.currentCard.index++;
                         this.currentCard = randomCard as Card;
-                        this.setDisplayCard(this.currentCard);
+                        //this.setDisplayCard(this.currentCard);
                     }
                     else 
                     {
@@ -213,14 +224,12 @@ export class Game
                 if(this.right)
                 {
                     this.deck.gotoAndPlay("discard_right");
-                    this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
                     this.right = false;
                 }
 
                 if(this.left)
                 {
                     this.deck.gotoAndPlay("discard_left");
-                    this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
                     this.left = false;
                 }
 
@@ -230,7 +239,7 @@ export class Game
                 this.deck_content_text.text = " ";
                 this.card_text.text = " ";
                 this.card_name.text = " ";
-                this.card_text.font = "50px 'OCR A Extended'";
+                this.card_text.font = "50px 'OCRAEXT'";
                 this.fontS = 50;
             }
 
@@ -246,7 +255,7 @@ export class Game
         this.card_text.text = this.currentCard.card_text;
 
         while(this.card_text.getBounds().height > 300)
-            this.card_text.font = --this.fontS + "px 'OCR A Extended'";
+            this.card_text.font = --this.fontS + "px 'OCRAEXT'";
 
 
         this.card_name.text = karte.card_name;
@@ -364,8 +373,7 @@ export class Game
         //createjs.Ticker.interval = 1000;
         //createjs.Ticker.framerate = 60;
 
-        this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
-
+       
         let i = 1;
         let count = 0;
         const anzahl = 3;
@@ -382,6 +390,9 @@ export class Game
                 this.stage_game.addChild(ani);
                 ani.x = this.deck.x - 200;
                 ani.y = this.deck.y - 270;
+
+                this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
+
             }
 
             if (count == anzahl) 

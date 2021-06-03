@@ -61,7 +61,7 @@ export class LevelLoader
 
     public async load(value: levels): Promise<void>
     {
-        console.log((this.lib as any).player);
+        //console.log((this.lib as any).player);
         if(this.current_stage != null)
         {
             this.stage.removeChild(this.current_stage);

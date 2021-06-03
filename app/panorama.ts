@@ -22,8 +22,9 @@ export class Panorama
         this.pollution_pic = this.stage_panorama.getChildByName("pollution_pic") as Animate.pollution_pic;
 
         //this.pollution_pic.cache(0, 0,this.pollution_pic.instance.getBounds().width,this.pollution_pic.instance.getBounds().height);
-        //this.pollution_pic.children[0].snapToPixel = true;
-       
+        this.pollution_pic.children[0].snapToPixel = true;
+
+        
         const tween: createjs.Tween = createjs.Tween.get(this.pollution_pic, {loop: 1, reversed:false, bounce:true}).to({x:-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width}, 300);
         this.stage_panorama.timeline.addTween(tween);
         

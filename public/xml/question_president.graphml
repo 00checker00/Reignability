@@ -333,7 +333,7 @@ Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:L
     </node>
     <node id="n12">
       <data key="d3" xml:space="preserve"><![CDATA[ID_001]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Diese Kreise können unterschiedlich gross werden, das heißt Ihre Auswikrungen der Entschiedungen werden dementsprechend ausfallen!]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Diese Kreise können unterschiedlich gross werden, das heißt Ihre Auswirkungen der Entscheidungen werden dementsprechend ausfallen!]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Dr. Right
 Nachhaltigkeitsexperte]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -917,24 +917,24 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
       </data>
     </edge>
     <edge id="e20" source="n11" target="n12">
-      <data key="d13" xml:space="preserve">-1</data>
-      <data key="d14" xml:space="preserve">-1</data>
-      <data key="d15" xml:space="preserve">-1</data>
+      <data key="d13" xml:space="preserve">-10</data>
+      <data key="d14" xml:space="preserve">-10</data>
+      <data key="d15" xml:space="preserve">-10</data>
       <data key="d16" xml:space="preserve"><![CDATA[Ah.. die Kreise...]]></data>
       <data key="d19">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="16.2509765625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="77.369140625" x="55.29696249053342" xml:space="preserve" y="61.32799594179528">Ah.. die Kreise...<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="left" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="10" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="16.2509765625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="77.369140625" x="39.106127732176816" xml:space="preserve" y="46.75647184839136">Ah.. die Kreise...<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="26.45984107482267" distanceToCenter="true" position="left" ratio="0.36345707668512217" segment="-1"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
     <edge id="e21" source="n10" target="n12">
-      <data key="d13" xml:space="preserve">1</data>
-      <data key="d14" xml:space="preserve">1</data>
-      <data key="d15" xml:space="preserve">1</data>
+      <data key="d13" xml:space="preserve">10</data>
+      <data key="d14" xml:space="preserve">10</data>
+      <data key="d15" xml:space="preserve">10</data>
       <data key="d16" xml:space="preserve"><![CDATA[Ah.. die Kreise...]]></data>
       <data key="d19">
         <y:PolyLineEdge>
@@ -947,9 +947,9 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
       </data>
     </edge>
     <edge id="e22" source="n11" target="n13">
-      <data key="d13" xml:space="preserve">-1</data>
-      <data key="d14" xml:space="preserve">-1</data>
-      <data key="d15" xml:space="preserve">-1</data>
+      <data key="d13" xml:space="preserve">-10</data>
+      <data key="d14" xml:space="preserve">-10</data>
+      <data key="d15" xml:space="preserve">-10</data>
       <data key="d16" xml:space="preserve"><![CDATA[Welche Kreise?]]></data>
       <data key="d19">
         <y:PolyLineEdge>
@@ -964,9 +964,9 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
       </data>
     </edge>
     <edge id="e23" source="n10" target="n13">
-      <data key="d13" xml:space="preserve">1</data>
-      <data key="d14" xml:space="preserve">1</data>
-      <data key="d15" xml:space="preserve">1</data>
+      <data key="d13" xml:space="preserve">10</data>
+      <data key="d14" xml:space="preserve">10</data>
+      <data key="d15" xml:space="preserve">10</data>
       <data key="d16" xml:space="preserve"><![CDATA[Welche Kreise?]]></data>
       <data key="d19">
         <y:PolyLineEdge>
@@ -1283,7 +1283,6 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
       <data key="d14" xml:space="preserve">-1</data>
       <data key="d15" xml:space="preserve">-3</data>
       <data key="d16" xml:space="preserve"><![CDATA[Ich will doch Leitung 1]]></data>
-      <data key="d18"/>
       <data key="d19">
         <y:PolyLineEdge>
           <y:Path sx="-1.085387988013622" sy="-30.40807749050191" tx="6.3544029410572875" ty="-30.40807749050191"/>
@@ -1296,7 +1295,6 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
     <edge id="e46" source="n22" target="n24">
       <data key="d13" xml:space="preserve">1</data>
       <data key="d16" xml:space="preserve"><![CDATA[Na gut weil Sie es sind]]></data>
-      <data key="d18"/>
       <data key="d19">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
@@ -1310,7 +1308,6 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
       <data key="d14" xml:space="preserve">-1</data>
       <data key="d15" xml:space="preserve">1</data>
       <data key="d16" xml:space="preserve"><![CDATA[Klingt gut]]></data>
-      <data key="d18"/>
       <data key="d19">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>

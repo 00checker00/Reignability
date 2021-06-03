@@ -20,7 +20,7 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     stage.enableMouseOver(10);
     createjs.Touch.enable(stage);
     stage.mouseMoveOutside = true;
-    stage.snapToPixel = true;
+    //stage.snapToPixelEnabled = true;
 
     const decks = Object.fromEntries(await Promise.all(["president","activist","joe"].map(async (deck)=> [deck,await loadXML(`/xml/question_${deck}.graphml`)])));
 
@@ -51,12 +51,26 @@ export function init(): void
     stage = new createjs.Stage(canvas);
     stage.setBounds(0,0,720,1280);
 
+    const queue = new createjs.LoadQueue();
 
-    initAnimate(stage).then((lib: AnimateLib)=>start(lib,stage).then(()=>
+    const finished = new Promise((resolve,reject)=>
     {
-        console.info("finish loading");
-    }));
-    
+        queue.on("complete",()=>resolve(null));
+        queue.on("error",()=>reject());
+        queue.on("fileerror",()=>reject()); 
+    });
+
+    queue.loadFile({id:"OCRAEXT",src:"OCRAEXT.TTF",type:"font"});
+    queue.load();
+
+    finished.then(()=> 
+    {
+        initAnimate(stage).then((lib: AnimateLib)=>start(lib,stage).then(()=>
+        {
+            console.info("finish loading");
+        }));
+    })
+
 }
 
 init();
