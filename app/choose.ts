@@ -73,44 +73,49 @@ export class Choose
         player.on("click",(evt: any): void =>
         {
 
-            this.stage_choose.setChildIndex(player,this.stage_choose.numChildren-1);
-            player.gotoAndPlay("zoom");
-
-            this.button_next = player.getChildByName("button_next") as createjs.MovieClip;
-            this.button_next.gotoAndStop("default");
-
-            this.button_next.on("pressup",(): void =>
+            if(this.player_activist.currentLabel === "default" && this.player_joe.currentLabel === "default" && this.player_president.currentLabel === "default")
             {
-                this.player_president.gotoAndStop("default");
-                this.player_activist.gotoAndStop("default");
-                this.player_joe.gotoAndStop("default");
-          
-                this.button_back.gotoAndStop("default");
-                if(player == this.player_president)
-                {
-                    this.choose_player(this.player_president);
-                    (this.lvlLoad.lib as any).player = "president";
-                }
-                if(player == this.player_activist)
-                {
-                    this.choose_player(this.player_activist);
-                    (this.lvlLoad.lib as any).player = "activist";
-                }
-                if(player == this.player_joe)
-                {
-                    this.choose_player(this.player_joe);
-                    (this.lvlLoad.lib as any).player = "joe";
-                }
 
-                this.lvlLoad.load(levels.PANORAMA);
-                
-            })
-
-            this.handleButton(this.button_next);
             
-            evt.remove();
-        })
+                this.stage_choose.setChildIndex(player,this.stage_choose.numChildren-1);
+                player.gotoAndPlay("zoom");
 
+                this.button_next = player.getChildByName("button_next") as createjs.MovieClip;
+                this.button_next.gotoAndStop("default");
+
+                this.button_next.on("pressup",(): void =>
+                {
+                    this.player_president.gotoAndStop("default");
+                    this.player_activist.gotoAndStop("default");
+                    this.player_joe.gotoAndStop("default");
+          
+                    this.button_back.gotoAndStop("default");
+                    if(player == this.player_president)
+                    {
+                        this.choose_player(this.player_president);
+                        (this.lvlLoad.lib as any).player = "president";
+                    }
+                    if(player == this.player_activist)
+                    {
+                        this.choose_player(this.player_activist);
+                        (this.lvlLoad.lib as any).player = "activist";
+                    }
+                    if(player == this.player_joe)
+                    {
+                        this.choose_player(this.player_joe);
+                        (this.lvlLoad.lib as any).player = "joe";
+                    }
+
+                    this.lvlLoad.load(levels.PANORAMA);
+                
+                })
+
+                this.handleButton(this.button_next);
+            
+                evt.remove();
+            }
+        });
+    
     }
 
     private handleButton(button: createjs.MovieClip): void
