@@ -111,6 +111,7 @@ export class Game
 
         this.back.on("pressup",(): void =>
         {
+            this.back.gotoAndStop("default");
             this.lvlLoad.load(levels.PAUSE);   
         })
     }

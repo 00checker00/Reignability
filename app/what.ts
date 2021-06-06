@@ -15,6 +15,8 @@ export class What
 
     public stage_what: createjs.MovieClip;
 
+    public zeilenListe = new Array<createjs.MovieClip>();
+
     public defaultY: number;
 
     constructor(loader: LevelLoader) 
@@ -50,6 +52,9 @@ export class What
         {
             const neue_zeile = new this.lvlLoad.lib.zeile();
 
+            this.zeilenListe.push(neue_zeile);
+
+
             neue_zeile.content_pic.gotoAndStop(index);
             neue_zeile.content_pic.x = this.content_pic.x;
 
@@ -75,6 +80,7 @@ export class What
         {
             this.zeile.y =  this.stage_what.globalToLocal(evt.stageX,evt.stageY).y + this.offset.y;
             this.zeile.updateCache();
+            
         });
         
     }

@@ -12,6 +12,8 @@ export class Panorama
 
     private offset: {x: number; y: number};
 
+    private oldX: number;
+
     private hold_circle: createjs.MovieClip;
 
     constructor(loader: LevelLoader) 
@@ -42,31 +44,35 @@ export class Panorama
             }
         })
 
-        this.pollution_pic.on("click",(): void =>
-        {
-            this.stage_panorama.stop();
-            
-        });
-
        
         this.pollution_pic.on("mousedown",(evt: any): void => 
         {
             this.offset = {x: this.pollution_pic.x - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x, y: this.pollution_pic.y - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y};
 
-           
+            this.stage_panorama.stop();
             this.stage_panorama.addChild(this.hold_circle);
             this.hold_circle.x = this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x;
             this.hold_circle.y = this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y;
             
+            this.oldX = this.pollution_pic.x;
 
         });
 
 
         this.pollution_pic.on("pressmove",(evt: any): void =>
         {
+            
+   
             this.pollution_pic.x = Math.max(Math.min(this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
             // bild.x = MAX(MIN(mouseX+offsetX,0) , - bild.breite + stage.breite)
             // bild.y = MAX(MIN(mouseY+offsetY,0) , - bild.höhe + stage.höhe)
+
+            const delta = Math.abs(this.pollution_pic.x - this.oldX);
+            console.log(delta);
+
+            if(delta > 50)
+                this.hold_circle.gotoAndPlay(0);
+            
         });
 
 
