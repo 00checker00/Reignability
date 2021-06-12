@@ -40,6 +40,12 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     levelLoad.lose = lose;
     levelLoad.what = what;
 
+    (lib as any).player = "None";
+    (lib as any).content = "None";
+    //fishing_small | oil_big
+    (lib as any).biod_sea_status = "fishing_small";
+
+
     //createjs.Ticker.framerate = 30;
     //createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 }

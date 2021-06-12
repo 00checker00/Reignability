@@ -1,3 +1,4 @@
+/// <reference path="../_build/@types/Animate.d.ts" />
 import { Game } from "./game";
 import { CardList } from "./card";
 import { Card } from "./card";
@@ -61,7 +62,6 @@ export class LevelLoader
 
     public async load(value: levels): Promise<void>
     {
-        //console.log((this.lib as any).player);
         if(this.current_stage != null)
         {
             this.stage.removeChild(this.current_stage);
@@ -91,6 +91,8 @@ export class LevelLoader
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_panorama);
             this.stage_panorama.play();
+
+            (this.stage_panorama as Animate.stage_panorama).pollution_pic.biod_sea.gotoAndStop((this.lib as any).biod_sea_status);
         
         }
         if(value == levels.GAME)
@@ -141,9 +143,14 @@ export class LevelLoader
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_game);
             this.current_stage = this.stage_game;
+
+            this.game.cardList = this.decks[(this.lib as any).player = JSON.parse(localStorage.getItem('player')).player];
+            this.game.loadSave();
+
             this.game.currentCard.visited = false;
-            this.game.currentCard = this.game.pauseCard;
-            this.game.setDisplayCard(this.game.pauseCard);
+            //this.game.currentCard = this.game.pauseCard;
+            this.game.setDisplayCard(this.game.currentCard);
+            this.game.shuffleAnimation();
         }
         if(value == levels.LOSE)
         {

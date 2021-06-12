@@ -68,7 +68,7 @@ export class Panorama
             // bild.y = MAX(MIN(mouseY+offsetY,0) , - bild.höhe + stage.höhe)
 
             const delta = Math.abs(this.pollution_pic.x - this.oldX);
-            console.log(delta);
+            //console.log(delta);
 
             if(delta > 50)
                 this.hold_circle.gotoAndPlay(0);

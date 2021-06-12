@@ -9,8 +9,10 @@ export class Game
 
     public back: createjs.MovieClip;
 
-    public buff1:  createjs.MovieClip;
-
+    public buff_1:  createjs.MovieClip;
+    public buff_2:  createjs.MovieClip;
+    public buff_3:  createjs.MovieClip;
+    public buff_4:  createjs.MovieClip;
 
     public pillar_social: createjs.MovieClip;
     public pillar_natur: createjs.MovieClip;
@@ -87,6 +89,11 @@ export class Game
         this.card_middle = this.deck.getChildByName("card_middle") as createjs.MovieClip;
         this.card_front = this.deck.getChildByName("card_front") as createjs.MovieClip;
 
+        this.buff_1 = this.stage_game.getChildByName("deck") as createjs.MovieClip;
+        this.buff_2 = this.stage_game.getChildByName("deck") as createjs.MovieClip;
+        this.buff_3 = this.stage_game.getChildByName("deck") as createjs.MovieClip;
+        this.buff_4 = this.stage_game.getChildByName("deck") as createjs.MovieClip;
+
         this.card_text.text = "";
         this.card_name.text = "";
         this.deck_content_text.text = "";
@@ -94,12 +101,6 @@ export class Game
         this.stage_game.on("rollout", (): void => 
         {
             this.out = true;
-
-            //this.right = false;
-            //this.left = false;
-            //this.deck.gotoAndStop("ready");
-            //this.deck_content_text.text = " ";
-            //this.resetDot();
         })
 
         this.stage_game.on("rollover", (): void => 
@@ -109,16 +110,20 @@ export class Game
 
         this.handleButton(this.back);
 
+
         this.back.on("pressup",(): void =>
         {
             this.back.gotoAndStop("default");
             this.lvlLoad.load(levels.PAUSE);   
         })
+
+
     }
 
     public startGame(): void 
     {
         this.deck.gotoAndPlay("draw");
+
 
         this.card_text.text = this.currentCard.card_text;
         this.card_name.text = this.currentCard.card_name;
@@ -127,7 +132,7 @@ export class Game
         this.deck_content.gotoAndStop(this.currentCard.card_id);
         this.deck_content_text.text = this.currentCard.text_mitte;
 
-        this.card_text.font = "50px 'OCRAEXT'";
+        //this.card_text.font = "50px 'OCRAEXT'";
 
         createjs.Ticker.on("tick", (): void => 
         {
@@ -173,79 +178,85 @@ export class Game
 
         });
 
-        // Karte los lassen 
-        this.stage_game.on("pressup", (): void => 
+        //Play Karte los lassen (evt): void =>
+        
+        this.stage_game.on("pressup", (evt) => 
         {
-            
-            //Touch Reset
-            this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
+            {
+                //Touch Reset
+                this.lvlLoad.stage.mouseX = this.stage_game.localToGlobal(this.lvlLoad.stage.getBounds().width / 2,this.lvlLoad.stage.getBounds().height / 2).x;
            
-            if(this.right)
-            {
-                this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
-            }
-
-            if(this.left)
-            {
-                this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
-            }
-
-            if (this.right || this.left) 
-            {
-                this.card_text.font = "50px 'OCRAEXT'";
-                this.fontS = 50;
-
-                if (this.currentCard instanceof Card) 
-                {
-                    if(this.right)
-                        this.currentCard = this.currentCard.next_rechts as Card;
-
-                    if(this.left)
-                        this.currentCard = this.currentCard.next_links as Card;
-
-                    (this.lvlLoad.lib as any).content = this.currentCard.card_id;
-                    this.currentCard.visited = true;
-                }
-                if (this.currentCard instanceof RandomPool) 
-                {
-                    if (this.currentCard.index < this.currentCard.count) 
-                    {
-                        const randomCard = this.currentCard.pool[this.currentCard.index];
-                        this.currentCard.index++;
-                        this.currentCard = randomCard as Card;
-                        //this.setDisplayCard(this.currentCard);
-                    }
-                    else 
-                    {
-                        this.currentCard.index = 0;
-                        this.currentCard = this.currentCard.next as Card;
-                    }
-                }
-
                 if(this.right)
                 {
-                    this.deck.gotoAndPlay("discard_right");
-                    this.right = false;
+                    this.setValues(this.currentCard.value_social_rechts, this.currentCard.value_natur_rechts, this.currentCard.value_dollar_rechts);
                 }
 
                 if(this.left)
                 {
-                    this.deck.gotoAndPlay("discard_left");
-                    this.left = false;
+                    this.setValues(this.currentCard.value_social_links, this.currentCard.value_natur_links, this.currentCard.value_dollar_links);
                 }
 
-                if(this.value_social <= 0 || this.value_dollar <= 0 || this.value_natur <= 0 || this.value_social >= 1 || this.value_natur >= 1 || this.value_dollar >= 1)
-                    this.lvlLoad.load(levels.LOSE);
+                if (this.right || this.left) 
+                {
+                    this.card_text.font = "50px 'OCRAEXT'";
+                    this.fontS = 50;
 
-                this.deck_content_text.text = " ";
-                this.card_text.text = " ";
-                this.card_name.text = " ";
-                this.card_text.font = "50px 'OCRAEXT'";
-                this.fontS = 50;
+                    if (this.currentCard instanceof Card) 
+                    {
+                        if(this.right)
+                            this.currentCard = this.currentCard.next_rechts as Card;
+
+                        if(this.left)
+                            this.currentCard = this.currentCard.next_links as Card;
+
+                        (this.lvlLoad.lib as any).content = this.currentCard.card_id;
+                        this.currentCard.visited = true;
+
+                        this.cardChecker();
+                        this.setSave();
+                    }
+                    if (this.currentCard instanceof RandomPool) 
+                    {
+                        if (this.currentCard.index < this.currentCard.count) 
+                        {
+                            const randomCard = this.currentCard.pool[this.currentCard.index];
+                            this.currentCard.index++;
+                            this.currentCard = randomCard as Card;
+                        //this.setDisplayCard(this.currentCard);
+                        }
+                        else 
+                        {
+                            this.currentCard.index = 0;
+                            this.currentCard = this.currentCard.next as Card;
+                        }
+                    }
+
+                    if(this.right)
+                    {
+                        this.deck.gotoAndPlay("discard_right");
+                        this.right = false;
+                    }
+
+                    if(this.left)
+                    {
+                        this.deck.gotoAndPlay("discard_left");
+                        this.left = false;
+                    }
+
+                    if(this.value_social <= 0 || this.value_dollar <= 0 || this.value_natur <= 0 || this.value_social >= 1 || this.value_natur >= 1 || this.value_dollar >= 1)
+                        this.lvlLoad.load(levels.LOSE);
+
+                    this.deck_content_text.text = " ";
+                    this.card_text.text = " ";
+                    this.card_name.text = " ";
+                    this.card_text.font = "50px 'OCRAEXT'";
+                    this.fontS = 50;
+                }
+            
+           
             }
-
         });
-
+    
     }
 
     public setDisplayCard(karte: Card): void 
@@ -370,17 +381,13 @@ export class Game
     public shuffleAnimation(): void 
     {
 
-        // these are equivalent, 1000ms / 40fps = 25ms
-        //createjs.Ticker.interval = 1000;
-        //createjs.Ticker.framerate = 60;
-
-       
         let i = 1;
         let count = 0;
         const anzahl = 3;
 
         createjs.Ticker.on("tick", (): void => 
         {
+
             i = (i + 1) % 6;
             if (i == 0 && count <= anzahl) 
             {
@@ -403,25 +410,104 @@ export class Game
             }
 
         }); 
+
+   
     }
 
     private handleButton(button: createjs.MovieClip): void
     {
         button.mouseChildren = false;
-
+      
         button.on("mouseleave",(): void =>
         {
             button.gotoAndStop("default");
-        })
-        button.on("mousedown",(): void =>
+        });
+
+        button.on("mousedown",(evt: createjs.Event): void =>
         {
+            
+            evt.stopPropagation();
+
             button.gotoAndStop("hover");
-            this.pauseCard = this.currentCard;
-        })
+            //this.pauseCard = this.currentCard;
+        });
+
+        button.on("pressup",(evt: createjs.Event): void =>
+        {
+            evt.stopPropagation();
+        });
+
         button.on("rollout",(): void =>
         {
             button.gotoAndStop("default");
-        })
+        });
     }
 
+    private setSave():void
+    {
+        localStorage.setItem('pillar', JSON.stringify({dollar: this.value_dollar, natur: this.value_natur, social: this.value_social}));
+        localStorage.setItem('player', JSON.stringify({player: (this.lvlLoad.lib as any).player}));
+        localStorage.setItem('biod', JSON.stringify({biod_sea_status: (this.lvlLoad.lib as any).biod_sea_status}));
+
+        if(this.currentCard instanceof Card)
+            localStorage.setItem('card', JSON.stringify({currentCard_text: this.currentCard.card_text}));
+       
+        if(this.currentCard instanceof RandomPool)
+            localStorage.setItem('card', JSON.stringify({currentCard_text: (this.currentCard.pool[0] as Card).card_text}));
+       
+    }
+
+    public loadSave():void
+    {
+        
+        if(localStorage.length > 0)
+        {
+            JSON.parse(localStorage.getItem('pillar')).dollar = this.value_dollar;
+            JSON.parse(localStorage.getItem('pillar')).natur = this.value_natur;
+            JSON.parse(localStorage.getItem('pillar')).social = this.value_social;
+            
+            (this.lvlLoad.lib as any).player = JSON.parse(localStorage.getItem('player')).player;
+            
+            
+            (this.lvlLoad.lib as any).biod_sea_status = JSON.parse(localStorage.getItem('biod')).biod_sea_status;
+
+       
+            const currentText: string = JSON.parse(localStorage.getItem('card')).currentCard_text;
+
+            for (let index = 0; index < this.cardList.length; index++) 
+            {
+                if(this.cardList[index] instanceof Card)
+                {
+                    if(currentText === (this.cardList[index] as Card).card_text)
+                    {
+                        this.currentCard = this.cardList[index] as Card;
+                    }
+                }
+            }
+        }
+    }
+
+    private setBuff(buff: string)
+    {
+        //default|oil|health|wissen|
+        if(this.buff_1.currentLabel === "default")
+        {
+
+        }
+    }
+
+    
+    private cardChecker():void
+    {
+        if(this.currentCard.card_text?.startsWith("Danke für Ihre Investition. Wir setzten auf 100% Tierabschreckendeanlagen"))
+        {
+            //fishing_small | oil_big
+            (this.lvlLoad.lib as any).biod_sea_status = "oil_big";
+            
+            //document.cookie += "Danke für Ihre Investition. Wir setzten auf 100% Tierabschreckendeanlagen";
+            localStorage.setItem('biod', JSON.stringify({biod_sea_status: 'oil_big'}));
+
+
+        }
+    }
 }

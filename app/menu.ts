@@ -45,6 +45,12 @@ export class Menu
         this.handleButton(this.button_what);
         this.handleButton(this.button_option);
 
+
+        if(localStorage.length > 0)
+        {
+            this.button_cont.visible = true;
+            this.button_newgame.visible = false;
+        }
         
     }
 
@@ -84,7 +90,17 @@ export class Menu
                 this.lvlLoad.load(levels.CHOOSE);
 
             if(button == this.button_what)
+            {
                 this.lvlLoad.load(levels.WHAT);
+                
+            }
+            
+            if(button == this.button_option)
+            {
+                localStorage.clear();
+                this.button_cont.visible = false;
+                this.button_play.visible = true;
+            }
  
             if(button == this.button_cont)
             {
