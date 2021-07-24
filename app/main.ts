@@ -42,6 +42,7 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
 
     (lib as any).player = "None";
     (lib as any).content = "None";
+    (lib as any).buff = "default";
     //fishing_small | oil_big
     (lib as any).biod_sea_status = "fishing_small";
 

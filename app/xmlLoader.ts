@@ -124,7 +124,16 @@ export async function loadXML(url: string): Promise<(Card | RandomPool)[]>
                         }
                         node.next = cards[target.target];
                         node.pool = pool.map((element) => cards[element.target]);
-                        node.shufflePool();
+
+                        if(node.count >= 0)
+                            node.shufflePool();
+                        
+                        for (let index = 0; index < node_edges.length; index++) 
+                        {
+                            //console.log(node_edges[index].content_text)
+                            node.queryEdges.push(node_edges[index].content_text);
+                        }
+             
                     }
 
                 }

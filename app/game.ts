@@ -212,23 +212,53 @@ export class Game
                         (this.lvlLoad.lib as any).content = this.currentCard.card_id;
                         this.currentCard.visited = true;
 
-                        this.cardChecker();
+                        this.cardGameChecker();
                         this.setSave();
                     }
                     if (this.currentCard instanceof RandomPool) 
                     {
+                        //Geht die RandomPool-Karten durch
                         if (this.currentCard.index < this.currentCard.count) 
                         {
                             const randomCard = this.currentCard.pool[this.currentCard.index];
                             this.currentCard.index++;
                             this.currentCard = randomCard as Card;
-                        //this.setDisplayCard(this.currentCard);
                         }
-                        else 
+                        //Ziel erreicht raus aus Random
+                        else if(this.currentCard.index == this.currentCard.count)
                         {
                             this.currentCard.index = 0;
                             this.currentCard = this.currentCard.next as Card;
                         }
+                        //DecisionPool bei -1
+                        else if(this.currentCard.count < 0)
+                        {
+                            console.log(this.currentCard.pool);
+                            const length = this.currentCard.queryEdges.length;
+ 
+                            for (let index = 0; index < length; index++) 
+                            {
+                                const currentPool  = ((this.currentCard as unknown) as RandomPool);
+                                if(currentPool.queryEdges[index]?.startsWith("biod"))
+                                {
+                                    if(currentPool.queryEdges[index] === "biod_sea_status.oil_big" &&  (this.lvlLoad.lib as any).biod_sea_status === "oil_big")
+                                    {
+                                        const decisionCard = currentPool.pool[index];
+                                        this.currentCard = decisionCard as Card;
+                                        break;
+                                    }
+                                }
+                                else if(currentPool.queryEdges[index] === "")
+                                {
+                                    const noDecisionCard = currentPool.next;
+                                    this.currentCard = noDecisionCard as Card;
+                                    console.log(index,currentPool.pool,currentPool.queryEdges);
+                                }
+                                
+                            }
+                            
+                        }
+                    
                     }
 
                     if(this.right)
@@ -471,7 +501,6 @@ export class Game
             
             (this.lvlLoad.lib as any).biod_sea_status = JSON.parse(localStorage.getItem('biod')).biod_sea_status;
 
-       
             const currentText: string = JSON.parse(localStorage.getItem('card')).currentCard_text;
 
             for (let index = 0; index < this.cardList.length; index++) 
@@ -496,8 +525,21 @@ export class Game
         }
     }
 
+    public cheatGoTo(cardText: string):void
+    {
+        for (let index = 0; index < this.cardList.length; index++) 
+        {
+            if(this.cardList[index] instanceof Card)
+            {
+                if((this.cardList[index]as Card).card_text?.startsWith(cardText))
+                {
+                    this.currentCard = this.cardList[index] as Card;
+                }
+            }
+        }
+    }
     
-    private cardChecker():void
+    private cardGameChecker():void
     {
         if(this.currentCard.card_text?.startsWith("Danke für Ihre Investition. Wir setzten auf 100% Tierabschreckendeanlagen"))
         {

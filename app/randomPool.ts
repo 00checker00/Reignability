@@ -11,6 +11,8 @@ export class RandomPool
 
     public pool: (Card | RandomPool)[] = [];
 
+    public queryEdges: string[] = [];
+
     constructor(count: number)
     {
         this.count = count;

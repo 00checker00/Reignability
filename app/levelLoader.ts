@@ -146,6 +146,8 @@ export class LevelLoader
 
             this.game.cardList = this.decks[(this.lib as any).player = JSON.parse(localStorage.getItem('player')).player];
             this.game.loadSave();
+            //Cheaten zu einem bestimmten Punkt der Karte
+            this.game.cheatGoTo("Bedenken Sie");
 
             this.game.currentCard.visited = false;
             //this.game.currentCard = this.game.pauseCard;
