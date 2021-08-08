@@ -6,6 +6,7 @@ export class Card
 { 
 
     public card_id: string;
+    public card_flag: string;
 
     public value_social_rechts: number;
     public value_natur_rechts: number;
@@ -28,7 +29,7 @@ export class Card
     public visited: Boolean = false;
 
 
-    constructor(id: string,vSr: number,vNr: number,vDr: number,vSl: number,vNl: number,vDl: number,cText: string,cName: string,textR: string,textL: string,textM: string) 
+    constructor(id: string,vSr: number,vNr: number,vDr: number,vSl: number,vNl: number,vDl: number,cText: string,cName: string,textR: string,textL: string,textM: string,flag: string) 
     {
         
         this.card_id = id;
@@ -47,6 +48,8 @@ export class Card
         this.text_rechts = textR;
         this.text_links = textL;
         this.text_mitte = textM;
+
+        this.card_flag = flag;
     }
 
 

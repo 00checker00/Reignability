@@ -37,12 +37,13 @@ export async function loadXML(url: string): Promise<(Card | RandomPool)[]>
                 {
 
                     const bild_id = $(element).find(`data[key=${mappings["bild_id"]}]`).text();
+                    const flag = $(element).find(`data[key=${mappings["flag"]}]`).text();
                     const card_name = $(element).find(`data[key=${mappings["card_name"]}]`).text();
                     const card_text = $(element).find(`data[key=${mappings["card_text"]}]`).text();
                     const middle = $(element).find(`data[key=${mappings["content_middle"]}]`).text() || "";
                     const node_id = $(element).attr("id");
 
-                    cards[node_id] = new Card(bild_id, 0, 0, 0, 0, 0, 0, card_text, card_name, "", "", middle);
+                    cards[node_id] = new Card(bild_id, 0, 0, 0, 0, 0, 0, card_text, card_name, "", "", middle,flag);
 
                     if($(element).find(`data[key=${mappings["type"]}]`).text() === "card_root")
                     {

@@ -92,8 +92,14 @@ export class LevelLoader
             this.stage.addChild(this.stage_panorama);
             this.stage_panorama.play();
 
-            (this.stage_panorama as Animate.stage_panorama).pollution_pic.biod_sea.gotoAndStop((this.lib as any).biod_sea_status);
-        
+            this.game.loadSave();
+            for (let index = 0; index < this.game.biods.length; index++) 
+            {
+                console.log(Object.keys(this.game.biods[index]));
+                
+            }
+            
+
         }
         if(value == levels.GAME)
         {
@@ -143,11 +149,12 @@ export class LevelLoader
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_game);
             this.current_stage = this.stage_game;
+               
 
             this.game.cardList = this.decks[(this.lib as any).player = JSON.parse(localStorage.getItem('player')).player];
             this.game.loadSave();
             //Cheaten zu einem bestimmten Punkt der Karte
-            this.game.cheatGoTo("Bedenken Sie");
+            
 
             this.game.currentCard.visited = false;
             //this.game.currentCard = this.game.pauseCard;

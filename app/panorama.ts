@@ -86,5 +86,9 @@ export class Panorama
         })
 
     }
-
+    
+    public setBiods()
+    {
+        return 
+    }
 }

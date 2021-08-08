@@ -57,6 +57,8 @@ export class Game
 
     public fontS = 50;
 
+    public biods = [{biod_sea: "fishing_small"},{biod_energy: ""},{biod_social: ""}];
+
     constructor(loader: LevelLoader) 
     { 
 
@@ -241,11 +243,16 @@ export class Game
                                 const currentPool  = ((this.currentCard as unknown) as RandomPool);
                                 if(currentPool.queryEdges[index]?.startsWith("biod"))
                                 {
-                                    if(currentPool.queryEdges[index] === "biod_sea_status.oil_big" &&  (this.lvlLoad.lib as any).biod_sea_status === "oil_big")
+                                    for (let anderer = 0; anderer < this.biods.length; anderer++) 
                                     {
-                                        const decisionCard = currentPool.pool[index];
-                                        this.currentCard = decisionCard as Card;
-                                        break;
+                                        //const element = this.biods[anderer];
+                                        if(Object.keys(this.biods[anderer])+"" == currentPool.queryEdges[index].split(".")[1])
+                                        {
+                                            const decisionCard = currentPool.pool[index];
+                                            this.currentCard = decisionCard as Card;
+                                            break;
+                                        }
+                                        
                                     }
                                 }
                                 else if(currentPool.queryEdges[index] === "")
@@ -477,19 +484,23 @@ export class Game
     {
         localStorage.setItem('pillar', JSON.stringify({dollar: this.value_dollar, natur: this.value_natur, social: this.value_social}));
         localStorage.setItem('player', JSON.stringify({player: (this.lvlLoad.lib as any).player}));
-        localStorage.setItem('biod', JSON.stringify({biod_sea_status: (this.lvlLoad.lib as any).biod_sea_status}));
 
+        
+        localStorage.setItem('biod', JSON.stringify(this.biods));
+        
+       
         if(this.currentCard instanceof Card)
             localStorage.setItem('card', JSON.stringify({currentCard_text: this.currentCard.card_text}));
        
         if(this.currentCard instanceof RandomPool)
             localStorage.setItem('card', JSON.stringify({currentCard_text: (this.currentCard.pool[0] as Card).card_text}));
        
+        this.setStatus();
     }
 
     public loadSave():void
     {
-        
+
         if(localStorage.length > 0)
         {
             JSON.parse(localStorage.getItem('pillar')).dollar = this.value_dollar;
@@ -498,9 +509,8 @@ export class Game
             
             (this.lvlLoad.lib as any).player = JSON.parse(localStorage.getItem('player')).player;
             
+            // (this.lvlLoad.lib as any).biod_sea_status = JSON.parse(localStorage.getItem('biod')).biod_sea_status;
             
-            (this.lvlLoad.lib as any).biod_sea_status = JSON.parse(localStorage.getItem('biod')).biod_sea_status;
-
             const currentText: string = JSON.parse(localStorage.getItem('card')).currentCard_text;
 
             for (let index = 0; index < this.cardList.length; index++) 
@@ -514,7 +524,41 @@ export class Game
                 }
             }
         }
+        else
+        {
+            this.setSave();
+        }
+        
+
     }
+
+    private setStatus()
+    {
+        for (const [key, value] of Object.entries(localStorage)) 
+        {
+            const obj: Object = JSON.parse(localStorage.getItem(key));
+
+            if(obj instanceof Array)
+            {
+                for (let index = 0; index < obj.length; index++) 
+                {
+                    if((Object.keys(obj)+"").startsWith("biod_"))
+                    {
+                        for (let index2 = 0; index2 < this.biods.length; index2++) 
+                        {
+                            if(Object.keys(this.biods[index2])+"" == Object.keys(obj)+"")
+                            {
+                                Object.assign(this.biods[index2],obj)
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+        console.log(this.biods);
+    }
+
 
     private setBuff(buff: string)
     {
@@ -525,7 +569,7 @@ export class Game
         }
     }
 
-    public cheatGoTo(cardText: string):void
+    public cheatGoTo(cardText: string):boolean
     {
         for (let index = 0; index < this.cardList.length; index++) 
         {
@@ -534,22 +578,34 @@ export class Game
                 if((this.cardList[index]as Card).card_text?.startsWith(cardText))
                 {
                     this.currentCard = this.cardList[index] as Card;
+                    return true;
                 }
             }
         }
+        return false;
     }
     
     private cardGameChecker():void
     {
-        if(this.currentCard.card_text?.startsWith("Danke für Ihre Investition. Wir setzten auf 100% Tierabschreckendeanlagen"))
+        if(this.currentCard.card_flag?.length > 0)
         {
-            //fishing_small | oil_big
-            (this.lvlLoad.lib as any).biod_sea_status = "oil_big";
-            
-            //document.cookie += "Danke für Ihre Investition. Wir setzten auf 100% Tierabschreckendeanlagen";
-            localStorage.setItem('biod', JSON.stringify({biod_sea_status: 'oil_big'}));
+            const flag = this.currentCard.card_flag.split(".");
+            //const flagObj = JSON.parse("{"+ '"'+flag[0]+ '"'+ ":" + '"'+flag[1]+ '"' +"}"); 
+            //JSON.stringify(obj1) === JSON.stringify(obj2)   //Compare
 
+            for (let index = 0; index < this.biods.length; index++) 
+            {
+                if(Object.keys(this.biods[index])+"" === flag[0])
+                {
+                    this.biods[index][flag[0]] = flag[1];
+                }
+           
+            }
 
         }
+        this.setStatus();
+        
     }
+
+
 }

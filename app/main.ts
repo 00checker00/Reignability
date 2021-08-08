@@ -46,7 +46,7 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     //fishing_small | oil_big
     (lib as any).biod_sea_status = "fishing_small";
 
-
+    (lib as any).cheat = game.cheatGoTo.bind(game);
     //createjs.Ticker.framerate = 30;
     //createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
 }
