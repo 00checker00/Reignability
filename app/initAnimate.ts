@@ -20,6 +20,10 @@ function handleComplete(stage: createjs.Stage, comp: any, evt: any): AnimateLib 
 
     canvas.style.backgroundColor = lib.properties.color;
 
+    var preloaderDiv = document.getElementById("_preload_div_");
+	preloaderDiv.style.display = 'none';
+	canvas.style.display = 'block';
+
     //Registers the "tick" event listener.
     const fnStartAnimation = function (): void {
         //stage.addChild(exportRoot);

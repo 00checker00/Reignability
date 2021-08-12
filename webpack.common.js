@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackInlineSVGPlugin = require('html-webpack-inline-svg-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require('path');
@@ -29,6 +30,10 @@ module.exports = {
                 loader: 'babel-loader',
             },
             {
+                test: /.svg$/,
+                type: "asset/resource"
+            },
+            {
                 test: /.s[ac]ss$/i,
                 use: [
                     // fallback to style-loader in development
@@ -54,6 +59,44 @@ module.exports = {
             filename: "index.html",
             template: "app/index.html",
             favicon: "app/images/fav_icon.png"
+        }),
+        new HtmlWebpackInlineSVGPlugin({
+            runPreEmit: true,
+            svgoConfig: [
+                { cleanupAttrs: false },
+                { mergeStyles: false },
+                { inlineStyles: false },
+                { removeDoctype: false },
+                { removeXMLProcInst: false },
+                { removeComments: false },
+                { removeMetadata: false },
+                { removeTitle: false },
+                { removeDesc: false },
+                { removeUselessDefs: false },
+                { removeEditorsNSData: false },
+                { removeEmptyAttrs: false },
+                { removeHiddenElems: false },
+                { removeEmptyText: false },
+                { removeEmptyContainers: false },
+                { removeViewBox: false },
+                { cleanupEnableBackground: false },
+                { minifyStyles: false },
+                { convertColors: false },
+                { convertPathData: false },
+                { convertTransform: false },
+                { removeUnknownsAndDefaults: false },
+                { removeNonInheritableGroupAttrs: false },
+                { removeUselessStrokeAndFill: false },
+                { removeUnusedNS: false },
+                { cleanupIDs: false },
+                { cleanupNumericValues: false },
+                { moveElemsAttrsToGroup: false },
+                { moveGroupAttrsToElems: false },
+                { collapseGroups: false },
+                { mergePaths: false },
+                { convertShapeToPath: false },
+                { convertEllipseToCircle: false },
+                { sortDefsChildren: false },]
         }),
         new CopyPlugin({
             patterns: [
