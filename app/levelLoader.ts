@@ -57,9 +57,16 @@ export class LevelLoader
         this.stage_what = new lib.stage_what();
 
         this.decks = decks;
+        
+        this.stage_menu.alpha = 0;
+        createjs.Tween.get(this.stage_menu).to({alpha:1}, 1500);
 
     }
-
+   
+    private handleComplete() 
+    {
+        //
+    }
     public async load(value: levels): Promise<void>
     {
         if(this.current_stage != null)
@@ -72,6 +79,8 @@ export class LevelLoader
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_menu);
             this.current_stage = this.stage_menu;
+
+            
         }
         if(value==levels.WHAT)
         {
@@ -84,7 +93,9 @@ export class LevelLoader
             (this.lib as any).player = "None"
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_choose);
+            //this.stage.addChild(this.stage_menu);
             this.current_stage = this.stage_choose;
+
         }
         if(value == levels.PANORAMA)
         {
@@ -95,7 +106,7 @@ export class LevelLoader
             this.game.loadSave();
             for (let index = 0; index < this.game.biods.length; index++) 
             {
-                console.log(Object.keys(this.game.biods[index]));
+                console.log(Object.keys(this.game.biods[index])+"");
                 
             }
             

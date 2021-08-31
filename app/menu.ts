@@ -87,7 +87,11 @@ export class Menu
             button.gotoAndStop("default");
 
             if(button == this.button_play)
+            {
                 this.lvlLoad.load(levels.CHOOSE);
+                //createjs.Tween.get(this.lvlLoad.stage_menu).to({alpha:0}, 3000);
+            }
+                
 
             if(button == this.button_what)
             {
