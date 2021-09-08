@@ -4,6 +4,7 @@ import { levels } from "./levelLoader";
 
 export class Panorama 
 {
+    //stage_panorama => pollution_pic => panorama_pic
     private lvlLoad: LevelLoader;
 
     public stage_panorama:  createjs.MovieClip;
@@ -31,10 +32,33 @@ export class Panorama
         this.stage_panorama.timeline.addTween(tween);
         
         this.pollution_pic.x = 0;
-       
 
         this.hold_circle = new this.lvlLoad.lib.hold_circle();
 
+        const fly = new this.lvlLoad.lib.fly_circle();
+        fly.scaleX = 1.1;
+        fly.scaleY = 1.1;
+   
+        console.log(fly.timeline);
+        //fly.timeline.removeTween(fly.timeline.tweens[0]);
+        //fly.timeline.addTween(newfly);
+ 
+        //(fly as any).fly_ani.stop();
+
+        this.stage_panorama.addChild(fly);
+        fly.x = this.lvlLoad.lib.properties.width/2;
+        fly.y = this.lvlLoad.lib.properties.height/2;        
+ 
+        //this.lvlLoad.stage.get
+
+        fly.on("mousedown",(evt: createjs.Event): void =>
+        {
+            //fly.visible = false;
+            fly.stop();
+            (fly as any).fly_ani.stop();
+            this.pollution_pic.dispatchEvent(evt);
+        });
+        
         this.hold_circle.timeline.on("change",(): void=>
         {
           
@@ -43,8 +67,8 @@ export class Panorama
                 this.lvlLoad.load(levels.GAME);
             }
         })
+      
 
-       
         this.pollution_pic.on("mousedown",(evt: any): void => 
         {
             this.offset = {x: this.pollution_pic.x - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x, y: this.pollution_pic.y - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y};
@@ -55,6 +79,7 @@ export class Panorama
             this.hold_circle.y = this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y;
             
             this.oldX = this.pollution_pic.x;
+           
 
         });
 
@@ -82,8 +107,10 @@ export class Panorama
             //this.hold_ani.stop();
             this.hold_circle.gotoAndPlay(0);
             this.stage_panorama.removeChild(this.hold_circle);
-            
-        })
+    
+            fly.play();
+            (fly as any).fly_ani.play();
+        });
 
     }
     

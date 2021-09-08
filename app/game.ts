@@ -57,7 +57,7 @@ export class Game
 
     public fontS = 50;
 
-    public biods = [{biod_sea: "fishing_small"},{biod_energy: ""},{biod_social: ""}];
+    public biods = [{biod_sea: "fishing_small"},{biod_energy: "atom"},{biod_social: "hill"}];
 
     constructor(loader: LevelLoader) 
     { 

@@ -90,6 +90,11 @@ export class LevelLoader
         }
         if(value == levels.CHOOSE)
         {
+            const fly_scale = new this.lib.fly_scale();
+            fly_scale.x = this.lib.properties.width/2;
+            fly_scale.y = this.lib.properties.height/2;
+            this.stage_choose.addChild(fly_scale);
+
             (this.lib as any).player = "None"
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_choose);
@@ -103,7 +108,7 @@ export class LevelLoader
             this.stage.addChild(this.stage_panorama);
             this.stage_panorama.play();
 
-            this.game.loadSave();
+            
             for (let index = 0; index < this.game.biods.length; index++) 
             {
                 console.log(Object.keys(this.game.biods[index])+"");
@@ -119,7 +124,7 @@ export class LevelLoader
             this.current_stage = this.stage_game;
             this.game.resetValues();
             this.game.shuffleAnimation();
-
+            
 
             if((this.lib as any).player === "president")
             {
@@ -128,6 +133,7 @@ export class LevelLoader
                 this.game.cardList = this.decks[this.game.current_player];
                 this.game.currentCard = this.game.cardList[0] as Card;
                 this.game.currentCard.visited = true;
+                this.game.loadSave();
             }
             if((this.lib as any).player === "activist")
             {
@@ -136,6 +142,7 @@ export class LevelLoader
                 this.game.cardList = this.decks[this.game.current_player];
                 this.game.currentCard = this.game.cardList[0] as Card;
                 this.game.currentCard.visited = true;
+                this.game.loadSave();
             }
             if((this.lib as any).player === "joe")
             {
@@ -144,6 +151,7 @@ export class LevelLoader
                 this.game.cardList = this.decks[this.game.current_player];
                 this.game.currentCard = this.game.cardList[0] as Card;
                 this.game.currentCard.visited = true;
+                this.game.loadSave();
             }
 
         }
