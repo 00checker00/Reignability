@@ -40,11 +40,7 @@ export class Panorama
         fly.scaleY = 1.1;
    
         console.log(fly.timeline);
-        //fly.timeline.removeTween(fly.timeline.tweens[0]);
-        //fly.timeline.addTween(newfly);
- 
-        //(fly as any).fly_ani.stop();
-
+        
         this.stage_panorama.addChild(fly);
         fly.x = this.lvlLoad.lib.properties.width/2;
         fly.y = this.lvlLoad.lib.properties.height/2;        
@@ -53,10 +49,8 @@ export class Panorama
 
         fly.on("mousedown",(evt: createjs.Event): void =>
         {
-            //fly.visible = false;
             fly.stop();
             (fly as any).fly_ani.stop();
-            this.pollution_pic.dispatchEvent(evt);
         });
         
         this.hold_circle.timeline.on("change",(): void=>
@@ -69,7 +63,7 @@ export class Panorama
         })
       
 
-        this.pollution_pic.on("mousedown",(evt: any): void => 
+        this.stage_panorama.on("mousedown",(evt: any): void => 
         {
             this.offset = {x: this.pollution_pic.x - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x, y: this.pollution_pic.y - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y};
 
@@ -81,10 +75,10 @@ export class Panorama
             this.oldX = this.pollution_pic.x;
            
 
-        });
+        },null, false, null,true);
 
 
-        this.pollution_pic.on("pressmove",(evt: any): void =>
+        this.stage_panorama.on("pressmove",(evt: any): void =>
         {
             
    
@@ -101,7 +95,7 @@ export class Panorama
         });
 
 
-        this.pollution_pic.on("pressup",(): void =>
+        this.stage_panorama.on("pressup",(): void =>
         {
             
             //this.hold_ani.stop();

@@ -49,6 +49,7 @@ export class Menu
         if(localStorage.length > 0)
         {
             this.button_cont.visible = true;
+            this.button_play.visible = false;
             this.button_newgame.visible = false;
         }
         

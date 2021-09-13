@@ -19,5 +19,31 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%,-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
   transform: translate(-50%, -50%);
 }
+#_preload_div_ {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30%;
+  z-index: 100;
+}
+/**
+#canvas, #_preload_div_ {
+	width: 720px; 
+	height: 50%; 
+	position: absolute; 
+	top: 50%; 
+	left: 50%;
+	right: 50%;
+	-webkit-transform: translate3d(-50%,-50%,0);
+	-ms-transform: translate(-50%,-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	transform: translate(-50%,-50%);
+	background-color: transparent;
+}**/
