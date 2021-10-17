@@ -5,6 +5,7 @@ import { Card } from "./card";
 import { Menu } from "./menu";
 import { death, Lose } from "./lose";
 import { What } from "./what";
+import { Panorama } from "./panorama";
 
 export enum levels 
 // eslint-disable-next-line @typescript-eslint/indent
@@ -37,6 +38,7 @@ export class LevelLoader
     public game: Game;
     public menu: Menu;
     public lose: Lose;
+    public panorama: Panorama;
     public what: What;
 
     private decks:{[key:string]:CardList};
@@ -106,16 +108,8 @@ export class LevelLoader
         {
             this.stage.removeChild(this.current_stage);
             this.stage.addChild(this.stage_panorama);
+            this.panorama.setBiods(this.game.biods);
             this.stage_panorama.play();
-
-            
-            for (let index = 0; index < this.game.biods.length; index++) 
-            {
-                console.log(Object.keys(this.game.biods[index])+"");
-                
-            }
-            
-
         }
         if(value == levels.GAME)
         {

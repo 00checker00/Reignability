@@ -145,7 +145,14 @@ Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:L
           <y:Geometry height="137.6230087430581" width="1068.5761157371298" x="-64.12109375" y="2297.188495628471"/>
           <y:Fill color="#FFCC00" transparent="false"/>
           <y:BorderStyle color="#3366FF" raised="false" type="line" width="5.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="16.2509765625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="9.5615234375" x="529.5072961498149" xml:space="preserve" y="60.68601609027883">4<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="532.2880578685649" y="66.81150437152883">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="532.2880578685649" y="66.81150437152883">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -176,8 +183,8 @@ ersten
 Amtshandlungen? Ah
 übrigends... der ist vom
 Discounter neben an.</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="125.400390625" x="2.0" xml:space="preserve" y="42.276477131622414">Dr. Right
-Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="66.015625" x="31.6923828125" xml:space="preserve" y="42.276477131622414">Quer-Office
+Einrichtung<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:Image alphaImage="true" refid="2"/>
         </y:ImageNode>
       </data>
@@ -200,8 +207,8 @@ Sitzmöglichkeit. Wir
 haben heute den Thron
 der Stohhälme im
 Angebot. Interesse?</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="125.400390625" x="2.0" xml:space="preserve" y="42.276477131622414">Dr. Right
-Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="66.015625" x="31.6923828125" xml:space="preserve" y="42.276477131622414">Quer-Office
+Einrichtung<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:Image alphaImage="true" refid="3"/>
         </y:ImageNode>
       </data>
@@ -224,8 +231,8 @@ reinem Tropenholz,
 noch ein
 Überbleibsel von
 Ihrem Vorgänger.</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="125.400390625" x="2.0" xml:space="preserve" y="42.276477131622414">Dr. Right
-Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="66.015625" x="31.6923828125" xml:space="preserve" y="42.276477131622414">Quer-Office
+Einrichtung<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:Image alphaImage="true" refid="4"/>
         </y:ImageNode>
       </data>
@@ -507,8 +514,8 @@ sollen wir
 verwenden?
 Altpapier oder das
 aus Einhornleder?</y:NodeLabel>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="125.400390625" x="2.0" xml:space="preserve" y="42.276477131622414">Dr. Right
-Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="66.015625" x="31.6923828125" xml:space="preserve" y="42.276477131622414">Quer-Office
+Einrichtung<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:Image alphaImage="true" refid="6"/>
         </y:ImageNode>
       </data>
@@ -713,7 +720,7 @@ unsere Anlagen sind
       <data key="d5" xml:space="preserve"><![CDATA[ÖMG Industry
 Öl Company]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
-      <data key="d9" xml:space="preserve"><![CDATA[biod_sea_status.oil_big]]></data>
+      <data key="d9" xml:space="preserve"><![CDATA[biod_sea.oil_big]]></data>
       <data key="d12">
         <y:ImageNode>
           <y:Geometry height="117.95529801324483" width="126.3209219858154" x="-35.6207266733154" y="4075.0223509933776"/>
@@ -811,6 +818,7 @@ Krankenhaus<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
       <data key="d5" xml:space="preserve"><![CDATA[Institution 
 Krankenhaus]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
+      <data key="d9" xml:space="preserve"><![CDATA[biod_social.hospital]]></data>
       <data key="d12">
         <y:ImageNode>
           <y:Geometry height="117.95529801324483" width="126.3209219858154" x="1496.8395390070923" y="3948.0229751379748"/>
@@ -835,6 +843,7 @@ Krankenhaus<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
       <data key="d5" xml:space="preserve"><![CDATA[Institution 
 Grundschule]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
+      <data key="d9" xml:space="preserve"><![CDATA[biod_social.school]]></data>
       <data key="d12">
         <y:ImageNode>
           <y:Geometry height="117.95529801324483" width="126.3209219858154" x="1080.8395390070923" y="3945.0223509933776"/>
@@ -952,7 +961,14 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
           <y:Geometry height="137.62300874305856" width="1068.5761157371298" x="-35.6207266733154" y="4791.18849562847"/>
           <y:Fill color="#339966" transparent="false"/>
           <y:BorderStyle color="#3366FF" raised="false" type="line" width="5.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="16.2509765625" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="12.8916015625" x="527.8422570873149" xml:space="preserve" y="60.686016090279736">-1<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="10" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="532.2880578685649" y="66.81150437152974">
+            <y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="532.2880578685649" y="66.81150437152974">
             <y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
@@ -967,7 +983,7 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
     </node>
     <node id="n39">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0011]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[biod_geil____Ich muss Ihnen mitteilen, dass ich den Abbau von Fossilienressourcen nicht so groovie finde...]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[biod_sea.oil_big__Ich muss Ihnen mitteilen, dass ich den Abbau von Fossilienressourcen nicht so groovie finde...]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Hr. Baumgärtner
 Umweltminister]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -976,10 +992,10 @@ Umweltminister]]></data>
           <y:Geometry height="117.95529801324483" width="126.3209219858154" x="26.8395390070923" y="5071.022350993378"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="106.908203125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.7109375" x="7.804992242907701" xml:space="preserve" y="121.95529801324483">biod_geil____Ich
-muss Ihnen
-mitteilen, dass ich
-den Abbau von
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="106.908203125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="114.0625" x="6.129210992907701" xml:space="preserve" y="121.95529801324483">biod_sea.
+oil_big__Ich muss
+Ihnen mitteilen, dass
+ich den Abbau von
 Fossilienressourcen
 nicht so groovie
 finde...</y:NodeLabel>
@@ -991,7 +1007,7 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
     </node>
     <node id="n40">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0011]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[geilo__Ich muss Ihnen mitteilen, dass ich den Abbau von Fossilienressourcen nicht so groovie finde...]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[biod_social_hosptial_Ich muss Ihnen mitteilen, dass ich den Abbau von Fossilienressourcen nicht so groovie finde...]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Hr. Baumgärtner
 Umweltminister]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -1000,9 +1016,10 @@ Umweltminister]]></data>
           <y:Geometry height="117.95529801324483" width="126.3209219858154" x="236.8395390070923" y="5071.022350993378"/>
           <y:Fill color="#CCCCFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="114.0625" x="6.129210992907701" xml:space="preserve" y="121.95529801324483">geilo__Ich muss
-Ihnen mitteilen, dass
-ich den Abbau von
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="106.908203125" horizontalTextPosition="center" iconTextGap="4" modelName="sandwich" modelPosition="s" textColor="#000000" verticalTextPosition="bottom" visible="true" width="112.076171875" x="7.122375055407701" xml:space="preserve" y="121.95529801324483">biod_social_hosptial
+_Ich muss Ihnen
+mitteilen, dass ich
+den Abbau von
 Fossilienressourcen
 nicht so groovie
 finde...</y:NodeLabel>
@@ -2054,15 +2071,7 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="151.18316650390625" y="28.0">
-            <y:LabelModel>
-              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
-          </y:EdgeLabel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="62.025390625" x="136.67681884765625" xml:space="preserve" y="20.6494140625">Ring ring...<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -2146,15 +2155,7 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="164.151611328125" y="28.0">
-            <y:LabelModel>
-              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
-          </y:EdgeLabel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="116.7109375" x="135.973876953125" xml:space="preserve" y="20.6494140625">Oh ich höre Stimmen<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -2209,7 +2210,6 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
     </edge>
     <edge id="e77" source="n35" target="n38">
       <data key="d17" xml:space="preserve"><![CDATA[Kein Randompool]]></data>
-      <data key="d19"/>
       <data key="d20">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="255.33266880475048" ty="11.08838067697343"/>
@@ -2222,7 +2222,6 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
     </edge>
     <edge id="e78" source="n35" target="n38">
       <data key="d17" xml:space="preserve"><![CDATA[nene kein randonm]]></data>
-      <data key="d19"/>
       <data key="d20">
         <y:PolyLineEdge>
           <y:Path sx="40.08516793429635" sy="-4.710993984845118" tx="295.41783673904683" ty="3.5781322838729466"/>
@@ -2234,41 +2233,30 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
       </data>
     </edge>
     <edge id="e79" source="n38" target="n39">
-      <data key="d17" xml:space="preserve"><![CDATA[biod]]></data>
-      <data key="d19"/>
+      <data key="d17" xml:space="preserve"><![CDATA[biod_sea.oil_big]]></data>
       <data key="d20">
         <y:PolyLineEdge>
           <y:Path sx="-408.6673311952495" sy="-10.708365980776762" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="129.42578125" x="-135.7518737982704" xml:space="preserve" y="63.48943926695392">biod_sea_status.oil_big<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="71.0389831732704" distanceToCenter="true" position="right" ratio="0.5153849415337982" segment="-1"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="90.736328125" x="-116.4071472357704" xml:space="preserve" y="63.48943926695392">biod_sea.oil_big<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="71.0389831732704" distanceToCenter="true" position="right" ratio="0.5153849415337982" segment="-1"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
     <edge id="e80" source="n38" target="n40">
-      <data key="d17" xml:space="preserve"><![CDATA[geilo]]></data>
-      <data key="d19"/>
+      <data key="d17" xml:space="preserve"><![CDATA[biod_social.hospital]]></data>
       <data key="d20">
         <y:PolyLineEdge>
           <y:Path sx="-198.66733119524952" sy="1.3080314481840105" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-32.0" y="69.0751308074532">
-            <y:LabelModel>
-              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
-            </y:LabelModel>
-            <y:ModelParameter>
-              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
-            </y:ModelParameter>
-            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
-          </y:EdgeLabel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="108.736328125" x="-84.3681640625" xml:space="preserve" y="61.724544869953206">biod_social.hospital<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
     <edge id="e81" source="n38" target="n41">
-      <data key="d19"/>
       <data key="d20">
         <y:PolyLineEdge>
           <y:Path sx="461.3326688047505" sy="-5.41965514162257" tx="0.0" ty="0.0"/>
@@ -2288,12 +2276,20 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
       </data>
     </edge>
     <edge id="e82" source="n38" target="n42">
-      <data key="d19"/>
       <data key="d20">
         <y:PolyLineEdge>
           <y:Path sx="11.332668804750483" sy="28.17595434706618" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-32.0" y="69.0927089324532">
+            <y:LabelModel>
+              <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartEdgeLabelModelParameter angle="0.0" distance="30.0" distanceToCenter="true" position="right" ratio="0.5" segment="0"/>
+            </y:ModelParameter>
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>

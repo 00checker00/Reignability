@@ -30,7 +30,7 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
 
     const menu = new Menu(levelLoad);
     new Choose(levelLoad);
-    new Panorama(levelLoad);
+    const panorama = new Panorama(levelLoad);
     const game = new Game(levelLoad);
     const lose = new Lose(levelLoad);
     const what= new What(levelLoad);
@@ -38,6 +38,7 @@ async function start(lib: AnimateLib, stage: createjs.Stage): Promise<void>
     levelLoad.game = game;
     levelLoad.menu = menu;
     levelLoad.lose = lose;
+    levelLoad.panorama = panorama;
     levelLoad.what = what;
 
     (lib as any).player = "None";

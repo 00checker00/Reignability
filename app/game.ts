@@ -134,8 +134,6 @@ export class Game
         this.deck_content.gotoAndStop(this.currentCard.card_id);
         this.deck_content_text.text = this.currentCard.text_mitte;
 
-        //this.card_text.font = "50px 'OCRAEXT'";
-
         createjs.Ticker.on("tick", (): void => 
         {
             
@@ -235,31 +233,26 @@ export class Game
                         //DecisionPool bei -1
                         else if(this.currentCard.count < 0)
                         {
-                            console.log(this.currentCard.pool);
                             const length = this.currentCard.queryEdges.length;
- 
-                            for (let index = 0; index < length; index++) 
+                            
+                            for (let index = 0; index < length-1; index++) 
                             {
                                 const currentPool  = ((this.currentCard as unknown) as RandomPool);
-                                if(currentPool.queryEdges[index]?.startsWith("biod"))
+                                console.log(currentPool);
+                                if(currentPool.queryEdges[index].startsWith("biod_"))
                                 {
-                                    for (let anderer = 0; anderer < this.biods.length; anderer++) 
+                                    const status = currentPool.queryEdges[index].split(".")[1];
+                                    if(this.biods[0].biod_sea == status || this.biods[1].biod_energy == status || this.biods[2].biod_social == status)
                                     {
-                                        //const element = this.biods[anderer];
-                                        if(Object.keys(this.biods[anderer])+"" == currentPool.queryEdges[index].split(".")[1])
-                                        {
-                                            const decisionCard = currentPool.pool[index];
-                                            this.currentCard = decisionCard as Card;
-                                            break;
-                                        }
-                                        
+                                        const decisionCard = currentPool.pool[index];
+                                        this.currentCard = decisionCard as Card;
+                                        break;
                                     }
                                 }
                                 else if(currentPool.queryEdges[index] === "")
                                 {
                                     const noDecisionCard = currentPool.next;
                                     this.currentCard = noDecisionCard as Card;
-                                    console.log(index,currentPool.pool,currentPool.queryEdges);
                                 }
                                 
                             }
@@ -484,13 +477,14 @@ export class Game
     {
         localStorage.setItem('pillar', JSON.stringify({dollar: this.value_dollar, natur: this.value_natur, social: this.value_social}));
         localStorage.setItem('player', JSON.stringify({player: (this.lvlLoad.lib as any).player}));
-
-        
         localStorage.setItem('biod', JSON.stringify(this.biods));
         
        
         if(this.currentCard instanceof Card)
+        {
             localStorage.setItem('card', JSON.stringify({currentCard_text: this.currentCard.card_text}));
+        }
+            
        
         if(this.currentCard instanceof RandomPool)
             localStorage.setItem('card', JSON.stringify({currentCard_text: (this.currentCard.pool[0] as Card).card_text}));
@@ -508,9 +502,11 @@ export class Game
             JSON.parse(localStorage.getItem('pillar')).social = this.value_social;
             
             (this.lvlLoad.lib as any).player = JSON.parse(localStorage.getItem('player')).player;
-            
-            // (this.lvlLoad.lib as any).biod_sea_status = JSON.parse(localStorage.getItem('biod')).biod_sea_status;
-            
+        
+            this.biods[0].biod_sea = JSON.parse(localStorage.getItem('biod'))[0].biod_sea;
+            this.biods[1].biod_energy = JSON.parse(localStorage.getItem('biod'))[1].biod_energy;
+            this.biods[2].biod_social = JSON.parse(localStorage.getItem('biod'))[2].biod_social;
+
             const currentText: string = JSON.parse(localStorage.getItem('card')).currentCard_text;
 
             for (let index = 0; index < this.cardList.length; index++) 
@@ -556,12 +552,12 @@ export class Game
                 }
             }
         }
-        console.log(this.biods);
     }
 
 
     private setBuff(buff: string)
     {
+        //TODO
         //default|oil|health|wissen|
         if(this.buff_1.currentLabel === "default")
         {
