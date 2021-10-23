@@ -25,6 +25,12 @@ lib.ssMetadata = [];
 
 
 
+(lib.abholz_small = function() {
+	this.initialize(img.abholz_small);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,1015,729);
+
+
 (lib.barn_1 = function() {
 	this.initialize(img.barn_1);
 }).prototype = p = new cjs.Bitmap();
@@ -61,6 +67,12 @@ p.nominalBounds = new cjs.Rectangle(0,0,367,357);
 p.nominalBounds = new cjs.Rectangle(0,0,468,555);
 
 
+(lib.city_small = function() {
+	this.initialize(img.city_small);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,452,539);
+
+
 (lib.energy_0 = function() {
 	this.initialize(img.energy_0);
 }).prototype = p = new cjs.Bitmap();
@@ -89,6 +101,12 @@ p.nominalBounds = new cjs.Rectangle(0,0,273,232);
 	this.initialize(img.hill_1);
 }).prototype = p = new cjs.Bitmap();
 p.nominalBounds = new cjs.Rectangle(0,0,607,205);
+
+
+(lib.industrie = function() {
+	this.initialize(img.industrie);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,1304,1273);
 
 
 (lib.krankenhaus_1 = function() {
@@ -131,6 +149,12 @@ p.nominalBounds = new cjs.Rectangle(0,0,470,341);
 	this.initialize(img.solar_tower);
 }).prototype = p = new cjs.Bitmap();
 p.nominalBounds = new cjs.Rectangle(0,0,299,338);
+
+
+(lib.street_small = function() {
+	this.initialize(img.street_small);
+}).prototype = p = new cjs.Bitmap();
+p.nominalBounds = new cjs.Rectangle(0,0,876,244);
 
 
 (lib.trassen_0 = function() {
@@ -989,6 +1013,82 @@ if (reversed == null) { reversed = false; }
 p.nominalBounds = new cjs.Rectangle(-111.5,-111.6,216.5,223.7);
 
 
+(lib.biod_wald = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {wald:0,abholz:1};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// timeline functions:
+	this.frame_0 = function() {
+		this.gotoAndStop(lib.biod_wald_status);
+	}
+	this.frame_1 = function() {
+		this.gotoAndStop(lib.biod_wald_status);
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1).call(this.frame_1).wait(1));
+
+	// Ebene_1
+	this.instance = new lib.wald_1();
+
+	this.instance_1 = new lib.abholz_small();
+	this.instance_1.setTransform(35,0);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,0,1050,729);
+
+
+(lib.biod_street = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {middle:0,small:1};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// timeline functions:
+	this.frame_0 = function() {
+		this.gotoAndStop(lib.biod_street_status);
+	}
+	this.frame_1 = function() {
+		this.gotoAndStop(lib.biod_street_status);
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1).call(this.frame_1).wait(1));
+
+	// Ebene_1
+	this.instance = new lib.car_1();
+	this.instance.setTransform(366,70,0.8042,0.8042);
+
+	this.instance_1 = new lib.bridge_2();
+	this.instance_1.setTransform(0,0,0.7208,0.7208);
+
+	this.instance_2 = new lib.street_small();
+	this.instance_2.setTransform(0,177);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).to({state:[{t:this.instance_2}]},1).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,0,876,432.5);
+
+
 (lib.biod_social = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
@@ -1030,6 +1130,83 @@ if (reversed == null) { reversed = false; }
 
 }).prototype = p = new cjs.MovieClip();
 p.nominalBounds = new cjs.Rectangle(-308,-202,616,345);
+
+
+(lib.biod_flaeche = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {farm:0,industry:1};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// timeline functions:
+	this.frame_0 = function() {
+		this.gotoAndStop(lib.biod_flaeche_status);
+	}
+	this.frame_1 = function() {
+		this.gotoAndStop(lib.biod_flaeche_status);
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1).call(this.frame_1).wait(1));
+
+	// Ebene_1
+	this.instance = new lib.feld_1();
+	this.instance.setTransform(0,500);
+
+	this.instance_1 = new lib.barn_1();
+	this.instance_1.setTransform(907,0);
+
+	this.instance_2 = new lib.industrie();
+	this.instance_2.setTransform(420,-415);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_1},{t:this.instance}]}).to({state:[{t:this.instance_2}]},1).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(0,-415,1724,1273);
+
+
+(lib.biod_city = function(mode,startPosition,loop,reversed) {
+if (loop == null) { loop = true; }
+if (reversed == null) { reversed = false; }
+	var props = new Object();
+	props.mode = mode;
+	props.startPosition = startPosition;
+	props.labels = {"middle":0,"small":1};
+	props.loop = loop;
+	props.reversed = reversed;
+	cjs.MovieClip.apply(this,[props]);
+
+	// timeline functions:
+	this.frame_0 = function() {
+		this.gotoAndStop(lib.biod_city_status);
+	}
+	this.frame_1 = function() {
+		this.gotoAndStop(lib.biod_city_status);
+	}
+
+	// actions tween:
+	this.timeline.addTween(cjs.Tween.get(this).call(this.frame_0).wait(1).call(this.frame_1).wait(1));
+
+	// Ebene_1
+	this.instance = new lib.city_2();
+	this.instance.setTransform(0,0,0.8211,0.8211);
+
+	this.instance_1 = new lib.city_small();
+	this.instance_1.setTransform(-128,-119);
+
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance}]}).to({state:[{t:this.instance_1}]},1).wait(1));
+
+	this._renderFirstFrame();
+
+}).prototype = p = new cjs.MovieClip();
+p.nominalBounds = new cjs.Rectangle(-128,-119,512.3,574.7);
 
 
 (lib.speech_bubble = function(mode,startPosition,loop,reversed) {
@@ -1652,7 +1829,7 @@ if (reversed == null) { reversed = false; }
 	var props = new Object();
 	props.mode = mode;
 	props.startPosition = startPosition;
-	props.labels = {"default":0,mini:1,small:2,middle:3,big:4};
+	props.labels = {"default":0,mini:1,"small":2,"middle":3,big:4};
 	props.loop = loop;
 	props.reversed = reversed;
 	cjs.MovieClip.apply(this,[props]);
@@ -2270,7 +2447,7 @@ if (reversed == null) { reversed = false; }
 	this.shape_112.setTransform(270.65,121.25);
 
 	this.shape_113 = new cjs.Shape();
-	this.shape_113.graphics.f("#515151").s().p("A0JVQIAAkqIAthIICwiOIAAC/IBXi4IB7hEIhnC7ICEiUICzBkIAACGIkAF5IAAj/IiSD8IAwkKIjMDQIicD6gAJMRLIA7nXIAcjhIDAjjIBWBHIBRj+ICEB+IAAjUIj5hxIizAHIBWi0IBXhnID/AAIAAGFIDGCrIAAJYIgXgkIhUioIg4D+IA4CsIijisIAvEXIiYhVIAAF3IjMjBIhBEigApnMvIjZibImRAGIDiiYICsAtIDpAkIBACPIgmBpgAuNEmIkBgsIBOhjIBXgJIggB+ICKiEIBZgBIGvDuIg0DEgAh/nKIBOgpICfgVIAsgdIgeBNIhiBvIAaA2IBzAkIkmBSgAEXquIBuhpICTg0IAwDsIgbBnIh8AAIiIAzgAiVq0ICojEIBeA5IAsBpIAACAIgpAnIjLAVIg+AxgANkpTIgXgSIgqiIIA/hhIjyjQIAAjFIAVhIIi1AkIg4BSIiShYIiQgLIiIhcIjxBbIjkFlIhlAAIhTg5IAAjKIG1kQICmgYIBVhnIBqAqIAkCRIB0AAIgziEIB0hJIBtBvIBJhkICoDbIgtBHICpAAIAYBpIh3B2IBsAAIAxA2IBrg6IA5AqIBdBAIBbDiIguA3IhnB6gAjAvuICLgoIjVCSgAETvkIgmgdIA5gCICUA1gADtwBIg5hEIATiCIDPBKIAmBfIgwg/Ih0AQIgrBMgAiWyWICKAAIgbAVIiOA2IgIAKg");
+	this.shape_113.graphics.f("#515151").s().p("A0JVQIAAkqIAthIICwiOIAAC/IBXi4IB7hEIhnC7ICEiUICzBkIAACGIkAF5IAAj/IiSD8IAwkKIjMDQIicD6gAJMRLIA7nXIAcjhIDAjjIBWBHIBRj+ICEB+IAAjUIj5hxIizAHIBWi0IBXhnID/AAIAAGFIDGCrIAAJYIgXgkIhUioIg4D+IA4CsIijisIAvEXIiYhVIAAF3IjMjBIhBEigApnMvIjZibImRAGIDiiYICsAtIDpAkIBACPIgmBpgAuNEmIkBgsIBOhjIBXgJIggB+ICKiEIBZgBIGvDuIg0DEgAh/nKIBOgpICfgVIAsgdIgeBNIhiBvIAaA2IBzAkIkmBSgAEXquIBuhpICTg0IAwDsIgbBnIh8AAIiIAzgAiVq0ICojEIBeA5IAsBpIAACAIgpAnIjLAVIg+AxgANkpTIgXgSIgqiIIA/hhIjyjQIAAjFIAVhIIi1AkIg4BSIiShYIiQgLIiIhcIjxBbIjkFlIhlAAIhTg5IAAjKIG1kQICmgYIBVhnIBqAqIAkCRIB0AAIgziEIB0hJIBtBvIBJhkICoDbIgtBHICpAAIAYBpIh3B2IBsAAIAxA2IBrg6IA5AqIBdBAIBbDiIguA3IhnB6gAjAvuICLgoIjVCSgAETvkIgmgdIg5hEIATiCIDPBKIAmBfIgwg/Ih0AQIgrBMIA5gCICUA1gAiWyWICKAAIgbAVIiOA2IgIAKg");
 	this.shape_113.setTransform(210.35,248.1);
 
 	this.shape_114 = new cjs.Shape();
@@ -2374,7 +2551,7 @@ if (reversed == null) { reversed = false; }
 	this.shape_138.setTransform(185.5,198.55);
 
 	this.shape_139 = new cjs.Shape();
-	this.shape_139.graphics.f("#655982").s().p("AniBeICLj8IE5k8ImvWegAnwmsIDIlDIgcjUIM0F1IoOB0Ik5E8g");
+	this.shape_139.graphics.f("#655982").s().p("AniBeICLj8IiZkOIDIlDIgcjUIM0F1IoOB0Ik5E8IE5k8ImvWeg");
 	this.shape_139.setTransform(292.3,361.825);
 
 	this.shape_140 = new cjs.Shape();
@@ -4628,13 +4805,23 @@ if (reversed == null) { reversed = false; }
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
-	// layer2
-	this.instance = new lib.car_1();
-	this.instance.setTransform(2697,273,0.8042,0.8042);
-
-	this.timeline.addTween(cjs.Tween.get(this.instance).wait(1));
-
 	// layer1
+	this.biod_city = new lib.biod_city();
+	this.biod_city.name = "biod_city";
+	this.biod_city.setTransform(2217.1,349.8,1,1,0,0,0,192.1,227.8);
+
+	this.biod_street = new lib.biod_street();
+	this.biod_street.name = "biod_street";
+	this.biod_street.setTransform(2680.8,414.2,1,1,0,0,0,360.8,216.2);
+
+	this.biod_wald = new lib.biod_wald();
+	this.biod_wald.name = "biod_wald";
+	this.biod_wald.setTransform(4980,915.5,1,1,0,0,0,525,364.5);
+
+	this.biod_flaeche = new lib.biod_flaeche();
+	this.biod_flaeche.name = "biod_flaeche";
+	this.biod_flaeche.setTransform(3381.5,850.5,1,1,0,0,0,845.5,426.5);
+
 	this.biod_social = new lib.biod_social();
 	this.biod_social.name = "biod_social";
 	this.biod_social.setTransform(1794,923);
@@ -4647,36 +4834,21 @@ if (reversed == null) { reversed = false; }
 	this.biod_sea.name = "biod_sea";
 	this.biod_sea.setTransform(577,610);
 
-	this.instance_1 = new lib.feld_1();
-	this.instance_1.setTransform(2536,924);
+	this.instance = new lib.berg_0();
+	this.instance.setTransform(4097,110);
 
-	this.instance_2 = new lib.barn_1();
-	this.instance_2.setTransform(3443,424);
-
-	this.instance_3 = new lib.berg_0();
-	this.instance_3.setTransform(4097,110);
-
-	this.instance_4 = new lib.wald_1();
-	this.instance_4.setTransform(4455,551);
-
-	this.instance_5 = new lib.city_2();
-	this.instance_5.setTransform(2025,122,0.8211,0.8211);
-
-	this.instance_6 = new lib.bridge_2();
-	this.instance_6.setTransform(2320,198,0.7208,0.7208);
-
-	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.biod_sea},{t:this.biod_energy},{t:this.biod_social}]}).wait(1));
+	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance},{t:this.biod_sea},{t:this.biod_energy},{t:this.biod_social},{t:this.biod_flaeche},{t:this.biod_wald},{t:this.biod_street},{t:this.biod_city}]}).wait(1));
 
 	// layer0
-	this.instance_7 = new lib.trassen_0();
-	this.instance_7.setTransform(2320,460);
+	this.instance_1 = new lib.trassen_0();
+	this.instance_1.setTransform(2320,460);
 
-	this.timeline.addTween(cjs.Tween.get(this.instance_7).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance_1).wait(1));
 
 	// pollution_pic
-	this.instance_8 = new lib.pollution();
+	this.instance_2 = new lib.pollution();
 
-	this.timeline.addTween(cjs.Tween.get(this.instance_8).wait(1));
+	this.timeline.addTween(cjs.Tween.get(this.instance_2).wait(1));
 
 	// himmel
 	this.shape_1 = new cjs.Shape();
@@ -5112,33 +5284,37 @@ lib.properties = {
 	color: "#006600",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/barn_1.png?1634499457473", id:"barn_1"},
-		{src:"images/berg_0.png?1634499457473", id:"berg_0"},
-		{src:"images/bohrinsel_0.png?1634499457473", id:"bohrinsel_0"},
-		{src:"images/bridge_2.png?1634499457473", id:"bridge_2"},
-		{src:"images/car_1.png?1634499457473", id:"car_1"},
-		{src:"images/city_2.png?1634499457473", id:"city_2"},
-		{src:"images/energy_0.png?1634499457473", id:"energy_0"},
-		{src:"images/energy_0_1.png?1634499457473", id:"energy_0_1"},
-		{src:"images/feld_1.png?1634499457473", id:"feld_1"},
-		{src:"images/fischer_1.png?1634499457473", id:"fischer_1"},
-		{src:"images/hill_1.png?1634499457473", id:"hill_1"},
-		{src:"images/krankenhaus_1.png?1634499457473", id:"krankenhaus_1"},
-		{src:"images/pollution.png?1634499457473", id:"pollution"},
-		{src:"images/port_1.png?1634499457473", id:"port_1"},
-		{src:"images/port_2.png?1634499457473", id:"port_2"},
-		{src:"images/schiff_2.png?1634499457473", id:"schiff_2"},
-		{src:"images/schule_1.png?1634499457473", id:"schule_1"},
-		{src:"images/solar_tower.png?1634499457473", id:"solar_tower"},
-		{src:"images/trassen_0.png?1634499457473", id:"trassen_0"},
-		{src:"images/wald_1.png?1634499457473", id:"wald_1"},
-		{src:"images/wind_body1.png?1634499457473", id:"wind_body1"},
-		{src:"images/wind_body2.png?1634499457473", id:"wind_body2"},
-		{src:"images/wind_body3.png?1634499457473", id:"wind_body3"},
-		{src:"images/wind_kopf1.png?1634499457473", id:"wind_kopf1"},
-		{src:"images/wind_kopf2.png?1634499457473", id:"wind_kopf2"},
-		{src:"images/wind_kopf3.png?1634499457473", id:"wind_kopf3"},
-		{src:"images/ölfleck.png?1634499457473", id:"ölfleck"}
+		{src:"images/abholz_small.png?1635010836743", id:"abholz_small"},
+		{src:"images/barn_1.png?1635010836743", id:"barn_1"},
+		{src:"images/berg_0.png?1635010836743", id:"berg_0"},
+		{src:"images/bohrinsel_0.png?1635010836743", id:"bohrinsel_0"},
+		{src:"images/bridge_2.png?1635010836743", id:"bridge_2"},
+		{src:"images/car_1.png?1635010836744", id:"car_1"},
+		{src:"images/city_2.png?1635010836744", id:"city_2"},
+		{src:"images/city_small.png?1635010836744", id:"city_small"},
+		{src:"images/energy_0.png?1635010836744", id:"energy_0"},
+		{src:"images/energy_0_1.png?1635010836744", id:"energy_0_1"},
+		{src:"images/feld_1.png?1635010836744", id:"feld_1"},
+		{src:"images/fischer_1.png?1635010836744", id:"fischer_1"},
+		{src:"images/hill_1.png?1635010836744", id:"hill_1"},
+		{src:"images/industrie.png?1635010836744", id:"industrie"},
+		{src:"images/krankenhaus_1.png?1635010836744", id:"krankenhaus_1"},
+		{src:"images/pollution.png?1635010836744", id:"pollution"},
+		{src:"images/port_1.png?1635010836744", id:"port_1"},
+		{src:"images/port_2.png?1635010836744", id:"port_2"},
+		{src:"images/schiff_2.png?1635010836744", id:"schiff_2"},
+		{src:"images/schule_1.png?1635010836744", id:"schule_1"},
+		{src:"images/solar_tower.png?1635010836744", id:"solar_tower"},
+		{src:"images/street_small.png?1635010836744", id:"street_small"},
+		{src:"images/trassen_0.png?1635010836744", id:"trassen_0"},
+		{src:"images/wald_1.png?1635010836744", id:"wald_1"},
+		{src:"images/wind_body1.png?1635010836744", id:"wind_body1"},
+		{src:"images/wind_body2.png?1635010836744", id:"wind_body2"},
+		{src:"images/wind_body3.png?1635010836744", id:"wind_body3"},
+		{src:"images/wind_kopf1.png?1635010836744", id:"wind_kopf1"},
+		{src:"images/wind_kopf2.png?1635010836744", id:"wind_kopf2"},
+		{src:"images/wind_kopf3.png?1635010836744", id:"wind_kopf3"},
+		{src:"images/ölfleck.png?1635010836744", id:"ölfleck"}
 	],
 	preloads: []
 };

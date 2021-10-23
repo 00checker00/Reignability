@@ -92,7 +92,7 @@ Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:L
     </node>
     <node id="n2">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0001]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Probieren Sie es mal. Was könnte Ihnen nur schlimmstens passieren? Dass Sie noch etwas lernen?]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Probieren Sie es mal. Was könnte Ihnen nur schlimmstens passieren? Dass Sie noch etwas dazu lernen?]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Dr. Right
 Nachhaltigkeitsexperte]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -105,7 +105,7 @@ Nachhaltigkeitsexperte]]></data>
 Was könnte Ihnen
 nur schlimmstens
 passieren? Dass Sie
-noch etwas lernen?</y:NodeLabel>
+noch etwas dazu lernen?</y:NodeLabel>
           <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#FFFFFF" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="33.40234375" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="125.400390625" x="2.0" xml:space="preserve" y="38.44990428394044">Dr. Right
 Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:Image alphaImage="true" refid="1"/>
@@ -167,7 +167,7 @@ Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:L
     </node>
     <node id="n5">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0013]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Möchten Sie einen neun Füllfederhalter? Zum Unterschreiben Ihrer ersten Amtshandlungen? Ah übrigends... der ist vom Discounter neben an.]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Möchten Sie einen neun Füllfederhalter? Zum Unterschreiben Ihrer ersten Amtshandlungen? Ah übrigends... dieser ist vom Discounter neben an.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Quer-Office
 Einrichtung]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -191,7 +191,7 @@ Einrichtung<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
     </node>
     <node id="n6">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0015]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Als neuer Herrscher benötigen Sie auch eine entsprechende Sitzmöglichkeit. Wir haben heute den Thron der Stohhälme im Angebot. Interesse?]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Als neuer Herrscher benötigen Sie auch eine entsprechende Sitzmöglichkeit. Wir haben heute den Thron der Stohhalme im Angebot. Interesse?]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Quer-Office
 Einrichtung]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -262,7 +262,7 @@ Sekretärin<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
     </node>
     <node id="n9">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0001]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Achten Sie auf Ihre getroffen Entscheidungen, diese können positive oder auch negative Auswirkungen auf die drei Säulen haben.]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Achten Sie auf Ihre getroffenen Entscheidungen, diese können positive oder auch negative Auswirkungen auf die drei Säulen haben.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Dr. Right
 Nachhaltigkeitsexperte]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -428,7 +428,7 @@ Nachhaltigkeitsexperte<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:L
     </node>
     <node id="n16">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0001]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Dann ist das Tutorial beendet und ich möchte Ihnen Frau Sommer vorstellen. Herr Mr Mr President.]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Dann somit ist das Tutorial beendet und ich möchte Ihnen Frau Sommer vorstellen. Herr Mr Mr President.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Dr. Right
 Nachhaltigkeitsexperte]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -619,7 +619,7 @@ Wirtschaftsminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:Labe
     </node>
     <node id="n24">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0010]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Ich bitte Sie mir zuzuhören und meine große Idee Ihnen vorstellen zu dürfen und Ihnen von einer glorreichen Welt berichten.]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Hören Sie mir genau zu, ich stelle Ihnen meine große Idee vor, die von einer glorreichen Welt.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Hr. Goldmann
 Wirtschaftsminister]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -666,7 +666,7 @@ Sozialministerin<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMo
     </node>
     <node id="n26">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0009]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Seien Sie nicht sketptisch, wir müssen in etwas inverstieren. Wenigstens in die Gesundheit unserer Nation. ]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Seien Sie nicht skeptisch, wir müssen in etwas investieren. Wenigstens in die Gesundheit unserer Nation.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Fr. Grünhäuser
 Sozialministerin]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -814,7 +814,7 @@ Krankenhaus<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
     </node>
     <node id="n32">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0020]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Durch Ihre Entscheidung haben wir nun eine Notfalleinrichtungen. Im Fall eines Notfalles sehr hilfreich!]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Durch Ihre Entscheidung haben wir nun eine Notfalleinrichtung. Im Fall eines Notfalles sehr hilfreich!]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Institution 
 Krankenhaus]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -839,7 +839,7 @@ Krankenhaus<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
     </node>
     <node id="n33">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0021]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Ihr Geburstag ist nun unser Ehrentag. An diesem Tag dürfen die Kinder ihr Portrait ausmalen.]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Ihr Geburtstag ist nun unser Ehrentag. An diesem Tag dürfen die Kinder ihr Portrait ausmalen.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Institution 
 Grundschule]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -863,7 +863,7 @@ Grundschule<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><
     </node>
     <node id="n34">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0002]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Da möchte ein Herr... an Sie ran treten. Er hat scheinbar ein großes Anliegen. Ich glaube ich stell Sie mal durch.]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Da möchte ein Herr... an Sie herantreten. Er hat scheinbar ein großes Anliegen. Ich glaube ich stell Sie mal durch.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Fr. Sommer
 Sekretärin]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>
@@ -910,8 +910,7 @@ Umweltminister<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelMode
     </node>
     <node id="n36">
       <data key="d3" xml:space="preserve"><![CDATA[ID_0010]]></data>
-      <data key="d4" xml:space="preserve"><![CDATA[Wir werden noch weitere erfolgreiche Geschäftige tätigen, Sie werden es nicht bereuen.
-]]></data>
+      <data key="d4" xml:space="preserve"><![CDATA[Wir werden noch weitere erfolgreiche Geschäftige tätigen, Sie werden es nicht bereuen.]]></data>
       <data key="d5" xml:space="preserve"><![CDATA[Hr. Goldmann
 Wirtschaftsminister]]></data>
       <data key="d8" xml:space="preserve"><![CDATA[card]]></data>

@@ -68,7 +68,9 @@ export class What
                 if(!this.moveFlag)
                 {
                     this.stage_what.gotoAndStop("content");
+                    (this.lvlLoad.lib as any).content = index;
                     (this.stage_what as any).content_pic.gotoAndStop(index);  
+                    
                     this.newContent = (this.stage_what as any).new_content;
                     this.defaultY = this.newContent.y;
                     const textField: createjs.Text = (this.stage_what as any).new_content.content_text;

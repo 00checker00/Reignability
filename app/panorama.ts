@@ -72,38 +72,36 @@ export class Panorama
                 
             this.flyFlag = !this.flyFlag;    
             
-            this.offset = {x: this.pollution_pic.x - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x, y: this.pollution_pic.y - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y};
-    
+            
             this.stage_panorama.on("mousedown",(evt: any): void => 
             {
                
-                
+                this.offset = {x: this.pollution_pic.x - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x, y: this.pollution_pic.y - this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y};
+    
                 this.stage_panorama.stop();
                 this.stage_panorama.addChild(this.hold_circle);
                 this.hold_circle.x = this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x;
                 this.hold_circle.y = this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).y;
                 
                 this.oldX = this.pollution_pic.x;
-                
+                this.stage_panorama.on("pressmove",(evt: any): void =>
+                {
+                    
+           
+                    this.pollution_pic.x = Math.max(Math.min(this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
+                    // bild.x = MAX(MIN(mouseX+offsetX,0) , - bild.breite + stage.breite)
+                    // bild.y = MAX(MIN(mouseY+offsetY,0) , - bild.höhe + stage.höhe)
+        
+                    const delta = Math.abs(this.pollution_pic.x - this.oldX);
+                    //console.log(delta);
+        
+                    if(delta > 50)
+                        this.hold_circle.gotoAndPlay(0);
+                    
+                });
     
             },null, false, null,true);
-            
-
-            this.stage_panorama.on("pressmove",(evt: any): void =>
-            {
-                
-       
-                this.pollution_pic.x = Math.max(Math.min(this.stage_panorama.globalToLocal(evt.stageX,evt.stageY).x + this.offset.x,0),-this.pollution_pic.getBounds().width+this.lvlLoad.stage.getBounds().width);
-                // bild.x = MAX(MIN(mouseX+offsetX,0) , - bild.breite + stage.breite)
-                // bild.y = MAX(MIN(mouseY+offsetY,0) , - bild.höhe + stage.höhe)
-    
-                const delta = Math.abs(this.pollution_pic.x - this.oldX);
-                //console.log(delta);
-    
-                if(delta > 50)
-                    this.hold_circle.gotoAndPlay(0);
-                
-            });
+          
     
             this.stage_panorama.on("pressup",(): void =>
             {
@@ -127,9 +125,14 @@ export class Panorama
     
     public setBiods(biods: any[]):void
     {
+        //BIODS anzeigen
         (this.lvlLoad.lib as any).biod_sea_status = biods[0].biod_sea;
         (this.lvlLoad.lib as any).biod_energy_status = biods[1].biod_energy;
         (this.lvlLoad.lib as any).biod_social_status = biods[2].biod_social;
-
+        (this.lvlLoad.lib as any).biod_street_status = biods[3].biod_street;
+        (this.lvlLoad.lib as any).biod_wald_status = biods[4].biod_wald;
+        (this.lvlLoad.lib as any).biod_city_status = biods[5].biod_city;
+        (this.lvlLoad.lib as any).biod_flaeche_status = biods[6].biod_flaeche;
+        
     }
 }

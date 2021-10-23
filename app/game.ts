@@ -57,7 +57,14 @@ export class Game
 
     public fontS = 50;
 
-    public biods = [{biod_sea: "fishing_small"},{biod_energy: "atom"},{biod_social: "hill"}];
+    //DEFINE BIODS
+    public biods = [{biod_sea: "fishing_small"}, //fishing_small,oil_big
+        {biod_energy: "atom"}, //atom,wind,solar
+        {biod_social: "hill"}, //hill,hospital,school
+        {biod_street: "small"}, //middle,small
+        {biod_wald: "abholz"}, //wald,abholz
+        {biod_city: "small"}, //middle,small
+        {biod_flaeche: "industry"}] //farm,industry
 
     constructor(loader: LevelLoader) 
     { 
@@ -242,6 +249,7 @@ export class Game
                                 if(currentPool.queryEdges[index].startsWith("biod_"))
                                 {
                                     const status = currentPool.queryEdges[index].split(".")[1];
+                                    //CHECK BIODS for decision
                                     if(this.biods[0].biod_sea == status || this.biods[1].biod_energy == status || this.biods[2].biod_social == status)
                                     {
                                         const decisionCard = currentPool.pool[index];
@@ -503,9 +511,14 @@ export class Game
             
             (this.lvlLoad.lib as any).player = JSON.parse(localStorage.getItem('player')).player;
         
+            //BIODS
             this.biods[0].biod_sea = JSON.parse(localStorage.getItem('biod'))[0].biod_sea;
             this.biods[1].biod_energy = JSON.parse(localStorage.getItem('biod'))[1].biod_energy;
             this.biods[2].biod_social = JSON.parse(localStorage.getItem('biod'))[2].biod_social;
+            this.biods[3].biod_street = JSON.parse(localStorage.getItem('biod'))[3].biod_street;
+            this.biods[4].biod_wald = JSON.parse(localStorage.getItem('biod'))[4].biod_wald;
+            this.biods[5].biod_city = JSON.parse(localStorage.getItem('biod'))[5].biod_city;
+            this.biods[6].biod_flaeche = JSON.parse(localStorage.getItem('biod'))[6].biod_flaeche;
 
             const currentText: string = JSON.parse(localStorage.getItem('card')).currentCard_text;
 
